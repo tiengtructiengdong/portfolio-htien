@@ -1,0 +1,62 @@
+---
+/**
+ * MobileHeader.astro
+ * Static header for mobile (Zero JS). The toggle button is wired
+ * up by the MobileNavigation island via aria-controls.
+ */
+---
+
+<header class="mobile-header">
+  <a class="mobile-header__brand" href="/">htien</a>
+  <div class="mobile-header__actions">
+    <slot name="actions" />
+    <button
+      class="mobile-header__toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-controls="mobile-nav"
+      aria-expanded="false"
+      data-nav-toggle
+    >
+      <span class="mobile-header__bar"></span>
+      <span class="mobile-header__bar"></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) 0;
+  }
+
+  .mobile-header__brand {
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+
+  .mobile-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .mobile-header__toggle {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .mobile-header__bar {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--color-fg);
+  }
+</style>

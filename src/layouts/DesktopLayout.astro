@@ -1,0 +1,25 @@
+---
+/**
+ * DesktopLayout.astro
+ * Multi-column grid layout.
+ * Desktop-only styles are scoped via the .desktop-shell class.
+ */
+import "../styles/desktop.css";
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  lang?: import("./BaseLayout.astro").Props["lang"];
+}
+
+const { title, description, lang } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <div class="desktop-shell">
+    <slot name="header" />
+    <aside><slot name="aside" /></aside>
+    <main><slot /></main>
+  </div>
+</BaseLayout>

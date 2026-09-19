@@ -1,0 +1,55 @@
+/* ============================================================
+   desktop.css
+   Desktop-only rules. Loaded via DesktopLayout.astro.
+   ============================================================ */
+
+.desktop-shell {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(0, 4fr) minmax(240px, 1fr);
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space-lg);
+  min-height: 100vh;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--gutter);
+  position: relative;
+}
+
+.desktop-shell > header {
+  grid-column: 1 / -1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  background: rgba(10, 10, 15, 0.6);
+}
+
+.desktop-shell > main {
+  grid-column: 2 / 3;
+  position: relative;
+  z-index: 2;
+}
+
+.desktop-shell > aside {
+  grid-column: 1 / 2;
+  align-self: start;
+  position: sticky;
+  top: var(--space-xl);
+}
+
+/* WebGL scene fills the main column */
+.webgl-scene {
+  position: relative;
+  width: 100%;
+  height: clamp(420px, 60vh, 720px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, #0d0d18 0%, #06060c 100%);
+  border: 1px solid var(--color-border);
+}
+
+@media (max-width: 1279px) {
+  .desktop-shell {
+    display: none;
+  }
+}

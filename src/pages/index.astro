@@ -1,0 +1,53 @@
+---
+/**
+ * index.astro
+ * Entry page configuring conditional hydration.
+ *
+ * Desktop and mobile shells are both server-rendered; the visible one
+ * is selected via CSS media queries. Islands hydrate per-device:
+ *   - Desktop: WebGLCanvas3D + ProjectFilter
+ *   - Mobile:  TouchCanvas2D + MobileNavigation + ProjectFilter
+ */
+import DesktopLayout from "@layouts/DesktopLayout.astro";
+import MobileLayout from "@layouts/MobileLayout.astro";
+import DesktopHeader from "@components/dom/desktop/DesktopHeader.astro";
+import DesktopProjectGrid from "@components/dom/desktop/DesktopProjectGrid.astro";
+import MobileHeader from "@components/dom/mobile/MobileHeader.astro";
+import MobileProjectList from "@components/dom/mobile/MobileProjectList.astro";
+import WebGLCanvas3D from "@components/islands/desktop/WebGLCanvas3D.tsx";
+import TouchCanvas2D from "@components/islands/mobile/TouchCanvas2D.tsx";
+import MobileNavigation from "@components/islands/mobile/MobileNavigation.tsx";
+import ProjectFilter from "@components/islands/shared/ProjectFilter.tsx";
+import LanguageSelector from "@components/islands/shared/LanguageSelector";
+import { projects } from "@lib/projects";
+import { localeFromUrl } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
+
+const locale: Locale = localeFromUrl(Astro.url);
+---
+
+{/* ============ DESKTOP ============ */}
+<DesktopLayout lang={locale}>
+  <DesktopHeader slot="header" lang={locale}>
+    <LanguageSelector slot="actions" client:load inline />
+  </DesktopHeader>
+  <aside slot="aside">
+    <ProjectFilter client:load />
+  </aside>
+
+  <div class="webgl-scene">
+    <WebGLCanvas3D client:only="react" className="webgl-scene__canvas" />
+  </div>
+  <DesktopProjectGrid projects={projects} />
+</DesktopLayout>
+
+{/* ============ MOBILE ============ */}
+<MobileLayout lang={locale}>
+  <MobileHeader slot="header">
+    <LanguageSelector slot="actions" client:load inline />
+  </MobileHeader>
+  <MobileNavigation client:load />
+  <TouchCanvas2D client:only="react" />
+  <ProjectFilter client:load />
+  <MobileProjectList projects={projects} />
+</MobileLayout>

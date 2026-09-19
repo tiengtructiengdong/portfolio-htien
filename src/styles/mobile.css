@@ -1,0 +1,59 @@
+/* ============================================================
+   mobile.css
+   Mobile-only rules. Loaded via MobileLayout.astro.
+   ============================================================ */
+
+.mobile-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Preserve notch / safe areas */
+  padding: max(env(safe-area-inset-top), var(--space-sm)) var(--space-md)
+    max(env(safe-area-inset-bottom), var(--space-sm));
+  gap: var(--space-md);
+}
+
+.mobile-shell > header {
+  position: sticky;
+  top: max(env(safe-area-inset-top), 0px);
+  z-index: 10;
+}
+
+.mobile-shell > main {
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-lg);
+  background: rgba(10, 10, 15, 0.96);
+  backdrop-filter: blur(16px);
+  transform: translateY(100%);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.mobile-nav-overlay[data-open="true"] {
+  transform: translateY(0);
+}
+
+.touch-canvas {
+  display: block;
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #101019 0%, #06060c 100%);
+  border: 1px solid var(--color-border);
+}
+
+@media (min-width: 1280px) {
+  .mobile-shell {
+    display: none;
+  }
+}

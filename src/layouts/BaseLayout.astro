@@ -1,0 +1,51 @@
+---
+/**
+ * BaseLayout.astro
+ * Common <head>, metadata, and global CSS imports.
+ * Registers all locale strings and detects the active locale.
+ */
+import "../styles/global.css";
+import { registerLocale, t, langAttr, localeFromUrl } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
+import en from "../locales/en.json";
+import ja from "../locales/ja.json";
+import ko from "../locales/ko.json";
+import vi from "../locales/vi.json";
+
+// Register all locales at module scope (idempotent)
+registerLocale("en", en);
+registerLocale("ja", ja);
+registerLocale("ko", ko);
+registerLocale("vi", vi);
+
+export interface Props {
+  title?: string;
+  description?: string;
+  lang?: Locale;
+}
+
+const {
+  title: titleOverride,
+  description: descriptionOverride,
+  lang: locale = "en",
+} = Astro.props;
+
+const lang = langAttr(locale);
+const pageTitle = titleOverride ?? t(locale, "site.title");
+const pageDescription = descriptionOverride ?? t(locale, "site.description");
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={pageDescription} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

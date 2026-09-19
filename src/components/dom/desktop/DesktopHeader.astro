@@ -1,0 +1,75 @@
+---
+/**
+ * DesktopHeader.astro
+ * Static HTML header for desktop (Zero JS).
+ * Uses i18n for nav labels and brand text.
+ */
+import { registerLocale, useTranslations } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
+import en from "../../../locales/en.json";
+import ja from "../../../locales/ja.json";
+import ko from "../../../locales/ko.json";
+import vi from "../../../locales/vi.json";
+
+registerLocale("en", en);
+registerLocale("ja", ja);
+registerLocale("ko", ko);
+registerLocale("vi", vi);
+
+export interface Props {
+  lang?: Locale;
+}
+
+const { lang: locale = "en" } = Astro.props;
+const t = useTranslations(locale);
+
+const nav = [
+  { label: t("nav.work"), href: "/#work" },
+  { label: t("nav.about"), href: "/#about" },
+  { label: t("nav.contact"), href: "/#contact" },
+];
+---
+
+<header class="desktop-header">
+  <a class="desktop-header__brand" href="/">{t("brand")}</a>
+  <nav class="desktop-header__nav">
+    {
+      nav.map((item) => (
+        <a class="desktop-header__link" href={item.href}>
+          {item.label}
+        </a>
+      ))
+    }
+    <slot name="actions" />
+  </nav>
+</header>
+
+<style>
+  .desktop-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .desktop-header__brand {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .desktop-header__nav {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .desktop-header__link {
+    color: var(--color-fg-muted);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .desktop-header__link:hover {
+    color: var(--color-fg);
+  }
+</style>

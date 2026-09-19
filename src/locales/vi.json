@@ -1,0 +1,37 @@
+{
+  "site": {
+    "title": "htien — Portfolio",
+    "description": "Portfolio của htien: tác phẩm WebGL tương tác & thiết kế."
+  },
+  "brand": "htien",
+  "nav": {
+    "work": "Tác phẩm",
+    "about": "About",
+    "contact": "Liên hệ"
+  },
+  "menu": {
+    "openLabel": "Mở menu"
+  },
+  "language": {
+    "label": "Ngôn ngữ",
+    "en": "EN",
+    "ja": "JA",
+    "ko": "KO",
+    "vi": "VI"
+  },
+  "filter": {
+    "all": "Tất cả"
+  },
+  "project": {
+    "back": "← Quay lại tác phẩm",
+    "pageTitle": "tác phẩm — htien"
+  },
+  "about": {
+    "title": "About — htien",
+    "heading": "About",
+    "bio": "Tôi là một lập trình viên full-stack và nhà công nghệ sáng tạo, yêu thích xây dựng những trải nghiệm tương tác với WebGL, đồ họa 3D và các công nghệ web hiện đại."
+  },
+  "meta": {
+    "yearRange": "{year}"
+  }
+}

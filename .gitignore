@@ -1,0 +1,38 @@
+# Local
+.DS_Store
+*.local
+*.log*
+
+# Dist
+node_modules
+dist/
+www/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+src/routeTree.gen.ts
+
+# Environment variables
+.env*
+!.env.example
+
+.windsurfrules
+src/routes/test/index.tsx
+.secrets
+extensions.json
+
+.serena/
+.tanstack/tmp/
+.cursor/
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+specs/*
+
+.agentlens/
+
+# Sisyphus work session artifacts
+.sisyphus/

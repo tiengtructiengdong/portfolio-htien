@@ -1,0 +1,89 @@
+---
+/**
+ * DesktopProjectGrid.astro
+ * Static project grid for desktop (Zero JS).
+ * Data is server-rendered; ProjectFilter island hydrates on top of it.
+ */
+export interface Project {
+  slug: string;
+  title: string;
+  category: string;
+  year: number;
+  cover: string;
+}
+
+export interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="desktop-grid" id="work" data-project-grid>
+  {
+    projects.map((project) => (
+      <article class="desktop-grid__item" data-category={project.category}>
+        <a href={`/work/${project.slug}`}>
+          <img
+            class="desktop-grid__cover"
+            src={project.cover}
+            alt={project.title}
+            loading="lazy"
+            width="640"
+            height="400"
+          />
+          <div class="desktop-grid__meta">
+            <h3 class="desktop-grid__title">{project.title}</h3>
+            <span class="desktop-grid__cat">
+              {project.category} — {project.year}
+            </span>
+          </div>
+        </a>
+      </article>
+    ))
+  }
+</section>
+
+<style>
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .desktop-grid__item a {
+    display: block;
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .desktop-grid__item a:hover {
+    transform: translateY(-4px);
+  }
+
+  .desktop-grid__cover {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: var(--color-bg-elevated);
+  }
+
+  .desktop-grid__meta {
+    padding: var(--space-sm) 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .desktop-grid__title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .desktop-grid__cat {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-fg-muted);
+  }
+</style>

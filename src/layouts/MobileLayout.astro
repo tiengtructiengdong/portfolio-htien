@@ -1,0 +1,23 @@
+---
+/**
+ * MobileLayout.astro
+ * Single-column touch layout wrapper.
+ */
+import "../styles/mobile.css";
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  lang?: import("./BaseLayout.astro").Props["lang"];
+}
+
+const { title, description, lang } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <div class="mobile-shell">
+    <slot name="header" />
+    <main><slot /></main>
+  </div>
+</BaseLayout>

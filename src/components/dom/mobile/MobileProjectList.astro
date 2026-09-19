@@ -1,0 +1,79 @@
+---
+/**
+ * MobileProjectList.astro
+ * Static, vertically-stacked project list for mobile (Zero JS).
+ */
+export interface Project {
+  slug: string;
+  title: string;
+  category: string;
+  year: number;
+  cover: string;
+}
+
+export interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<ol class="mobile-list" id="work">
+  {
+    projects.map((project) => (
+      <li class="mobile-list__item" data-category={project.category}>
+        <a href={`/work/${project.slug}`}>
+          <img
+            class="mobile-list__cover"
+            src={project.cover}
+            alt={project.title}
+            loading="lazy"
+            width="400"
+            height="250"
+          />
+          <div class="mobile-list__meta">
+            <h3 class="mobile-list__title">{project.title}</h3>
+            <span class="mobile-list__cat">
+              {project.category} — {project.year}
+            </span>
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .mobile-list__item a {
+    display: block;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .mobile-list__cover {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: var(--color-bg-elevated);
+  }
+
+  .mobile-list__meta {
+    padding: var(--space-xs) 0;
+  }
+
+  .mobile-list__title {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .mobile-list__cat {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-fg-muted);
+  }
+</style>
