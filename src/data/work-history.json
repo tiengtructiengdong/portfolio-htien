@@ -1,0 +1,60 @@
+[
+  {
+    "company_name": "Aurora Labs",
+    "slug": "aurora-labs",
+    "date_from": "2023-06",
+    "date_to": "2025-09",
+    "url": "https://aurora.example.com",
+    "image_url": "/fallback/aurora.jpg",
+    "projects": [
+      {
+        "name": "Realtime Collaboration Platform",
+        "tech_stack": ["React", "WebSocket", "Node.js", "PostgreSQL"],
+        "problem_solved": "Built a realtime collaborative editing platform supporting 10k+ concurrent users with conflict-free replicated data types (CRDTs).",
+        "url": "https://aurora.example.com/realtime"
+      },
+      {
+        "name": "Design System Overhaul",
+        "tech_stack": ["TypeScript", "Storybook", "Figma API"],
+        "problem_solved": "Migrated a fragmented component library into a unified design system, reducing UI bugs by 40% and improving dev velocity."
+      }
+    ]
+  },
+  {
+    "company_name": "Helix Studio",
+    "slug": "helix-studio",
+    "date_from": "2021-03",
+    "date_to": "2023-05",
+    "url": "https://helix.example.com",
+    "image_url": "/fallback/helix.jpg",
+    "projects": [
+      {
+        "name": "3D Product Configurator",
+        "tech_stack": ["Three.js", "GLSL", "React", "Vite"],
+        "problem_solved": "Created an interactive 3D product configurator with realtime material editing, boosting conversion rates by 25%.",
+        "url": "https://helix.example.com/configurator"
+      },
+      {
+        "name": "WebGL Particle Engine",
+        "tech_stack": ["WebGL", "TypeScript", "Web Workers"],
+        "problem_solved": "Developed a GPU-accelerated particle engine rendering 1M+ particles at 60fps on mid-range hardware."
+      }
+    ]
+  },
+  {
+    "company_name": "Tessera Inc",
+    "slug": "tessera-inc",
+    "date_from": "2019-08",
+    "date_to": "2021-02",
+    "url": "https://tessera.example.com",
+    "image_url": "/fallback/tessera.jpg",
+    "projects": [
+      {
+        "name": "Data Visualization Dashboard",
+        "tech_stack": ["D3.js", "React", "GraphQL", "Python"],
+        "problem_solved": "Built a real-time analytics dashboard processing 50M+ events/day with sub-second query latency.",
+        "url": "https://tessera.example.com/dashboard"
+      }
+    ]
+  }
+]

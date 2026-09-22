@@ -15,6 +15,7 @@
     },
     "verbatimModuleSyntax": true,
     "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
     "noEmit": true
   },
   "include": ["src", "astro.config.ts", ".astro/types.d.ts"],

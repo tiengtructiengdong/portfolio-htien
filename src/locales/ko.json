@@ -27,11 +27,25 @@
     "pageTitle": "작품 — htien"
   },
   "about": {
-    "title": "About — htien",
+    "title": "About",
     "heading": "About",
     "bio": "저는 풀스택 개발자이자 크리에이티브 테크놀로지스트로, WebGL, 3D 그래픽, 최신 웹 기술을 활용한 인터랙티브 경험 구축을 좋아합니다."
   },
+  "i_am_a": {
+    "heading": "나는",
+    "developer": "개발자",
+    "creative_technologist": "크리에이티브 테크놀로지스트",
+    "designer": "디자이너",
+    "artist": "아티스트"
+  },
   "meta": {
     "yearRange": "{year}"
+  },
+  "company_history": {
+    "title": "경력",
+    "projects": "프로젝트",
+    "back": "← 뒤로",
+    "link": "링크 ↗",
+    "close": "닫기"
   }
 }

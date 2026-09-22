@@ -1,0 +1,43 @@
+---
+/**
+ * company/[slug].astro
+ * Dynamic company detail page. getStaticPaths() enumerates all
+ * work history entries from the JSON data file.
+ *
+ * This page serves as the fallback for:
+ * - Mobile: full page navigation when tapping a company
+ * - Desktop: direct URL access / refresh on /company/{slug}
+ *
+ * Background and header are provided by BaseLayout.
+ */
+import BaseLayout from "@layouts/BaseLayout.astro";
+import CompanyDetailContent from "@components/islands/shared/CompanyDetailContent.tsx";
+import { workHistory, formatDateRange } from "@lib/work-history";
+import { useTranslations, localeFromUrl } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
+import { BACK_LINK, CARD } from "@lib/classes";
+
+export function getStaticPaths() {
+  return workHistory.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const locale: Locale = localeFromUrl(Astro.url);
+const t = useTranslations(locale);
+const { entry } = Astro.props;
+---
+
+<BaseLayout title={`${entry.company_name} — htien`} description={`${entry.company_name} — ${formatDateRange(entry.date_from, entry.date_to)}`} lang={locale}>
+  <article class="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
+    <a class={BACK_LINK} href="/#work-history">
+      {t("company_history.back")}
+    </a>
+    <div class="mt-6">
+      <div class={CARD}>
+        <CompanyDetailContent entry={entry} />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

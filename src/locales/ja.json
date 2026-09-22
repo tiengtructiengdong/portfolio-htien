@@ -27,11 +27,25 @@
     "pageTitle": "作品 — htien"
   },
   "about": {
-    "title": "About — htien",
+    "title": "About",
     "heading": "About",
     "bio": "フルスタック開発者兼クリエイティブテクノロジストです。WebGL、3Dグラフィックス、モダンなウェブ技術を使ったインタラクティブな体験の構築を得意としています。"
   },
+  "i_am_a": {
+    "heading": "私は",
+    "developer": "開発者",
+    "creative_technologist": "クリエイティブテクノロジスト",
+    "designer": "デザイナー",
+    "artist": "アーティスト"
+  },
   "meta": {
     "yearRange": "{year}"
+  },
+  "company_history": {
+    "title": "職歴",
+    "projects": "プロジェクト",
+    "back": "← 戻る",
+    "link": "リンク ↗",
+    "close": "閉じる"
   }
 }

@@ -1,12 +1,10 @@
----
+plu---
 /**
  * DesktopLayout.astro
  * Multi-column grid layout using Tailwind CSS.
  * Desktop-only — hidden below 1280px (mirrored in MobileLayout).
  */
-import clsx from "clsx";
 import BaseLayout from "./BaseLayout.astro";
-import { DESKTOP_SHELL, DESKTOP_ASIDE } from "@lib/classes";
 
 export interface Props {
   title?: string;
@@ -15,12 +13,21 @@ export interface Props {
 }
 
 const { title, description, lang } = Astro.props;
+
+const shellClasses =
+  "desktop-shell relative mx-auto hidden min-h-screen " +
+  "max-w-[1920px] grid-cols-[minmax(240px,1fr)_minmax(0,4fr)_minmax(240px,1fr)] " +
+  "grid-rows-[auto_1fr_auto] gap-8 " +
+  "px-[clamp(1rem,4vw,4rem)] py-8 lg:grid";
+
+const asideClasses =
+  "col-start-1 col-end-2 self-start lg:sticky lg:top-16";
 ---
 
 <BaseLayout title={title} description={description} lang={lang}>
-  <div class={DESKTOP_SHELL}>
+  <div class={shellClasses}>
     <slot name="header" />
-    <aside class={DESKTOP_ASIDE}>
+    <aside class={asideClasses}>
       <slot name="aside" />
     </aside>
     <main class="col-start-2 col-end-3 relative z-[2]">

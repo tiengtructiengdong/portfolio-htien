@@ -1,8 +1,9 @@
 ---
 /**
  * BaseLayout.astro
- * Common <head>, metadata, and global CSS imports.
- * Registers all locale strings and detects the active locale.
+ * Common <head>, metadata, global CSS imports, dot matrix background,
+ * and header bar. Wraps every page so the background and header
+ * appear consistently across the entire app.
  */
 import "../styles/global.css";
 import { registerLocale, t, langAttr, localeFromUrl } from "@lib/i18n";
@@ -11,6 +12,9 @@ import en from "../locales/en.json";
 import ja from "../locales/ja.json";
 import ko from "../locales/ko.json";
 import vi from "../locales/vi.json";
+import DotMatrixBackground from "@components/islands/shared/DotMatrixBackground.tsx";
+import LanguageSelector from "@components/islands/shared/LanguageSelector.tsx";
+import { MAIN, HEADER_BAR, BRAND } from "@lib/classes";
 
 // Register all locales at module scope (idempotent)
 registerLocale("en", en);
@@ -46,6 +50,21 @@ const pageDescription = descriptionOverride ?? t(locale, "site.description");
     <title>{pageTitle}</title>
   </head>
   <body>
-    <slot />
+    {/* Dot matrix particle background (fixed, behind all content) */}
+    <DotMatrixBackground client:only="react" />
+
+    {/* Main content layer (above the background) */}
+    <div class={MAIN}>
+      {/* Header bar */}
+      <header class={HEADER_BAR}>
+        <a href="/" class={BRAND}>
+          Tien Huynh
+        </a>
+        <LanguageSelector client:load inline />
+      </header>
+
+      {/* Page-specific content */}
+      <slot />
+    </div>
   </body>
 </html>

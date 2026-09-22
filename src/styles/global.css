@@ -1,9 +1,14 @@
 /* ============================================================
    global.css
-   Base reset + tokens shared by desktop & mobile layouts.
+   Tailwind CSS v4 entry + theme tokens shared across the site.
    ============================================================ */
 
-:root {
+@import "tailwindcss";
+
+/* ============================================================
+   Theme tokens (Tailwind v4 @theme)
+   ============================================================ */
+@theme {
   /* Color tokens */
   --color-bg: #0a0a0f;
   --color-bg-elevated: #11111a;
@@ -41,13 +46,10 @@
   --bp-desktop: 1280px;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ============================================================
+   Base reset (Tailwind preflight handles most of this, but
+   we keep a few custom rules for consistency)
+   ============================================================ */
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -110,7 +112,7 @@ ol {
 }
 
 /* ============================================================
-   Language Selector
+   Language Selector (kept as utility classes for the island)
    ============================================================ */
 
 .lang-selector {
