@@ -25,8 +25,12 @@ export default function ProjectFilter({
   // Collect categories from the server-rendered DOM.
   useEffect(() => {
     const container = document.querySelector<HTMLElement>(containerSelector);
-    if (!container) return;
-    const items = Array.from(container.querySelectorAll<HTMLElement>(itemSelector));
+    if (!container) {
+      return;
+    }
+    const items = Array.from(
+      container.querySelectorAll<HTMLElement>(itemSelector),
+    );
     const found = new Set<string>([DEFAULT_FILTER]);
     items.forEach((el) => {
       const cat = el.dataset.category;
@@ -38,8 +42,12 @@ export default function ProjectFilter({
   // Apply filter to the DOM.
   useEffect(() => {
     const container = document.querySelector<HTMLElement>(containerSelector);
-    if (!container) return;
-    const items = Array.from(container.querySelectorAll<HTMLElement>(itemSelector));
+    if (!container) {
+      return;
+    }
+    const items = Array.from(
+      container.querySelectorAll<HTMLElement>(itemSelector),
+    );
     items.forEach((el) => {
       const cat = el.dataset.category ?? "";
       const visible = active === DEFAULT_FILTER || cat === active;

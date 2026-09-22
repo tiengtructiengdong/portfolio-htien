@@ -56,12 +56,16 @@ export default function IAmACard({
     let cancelled = false;
 
     function typeNext(): void {
-      if (cancelled) return;
+      if (cancelled) {
+        return;
+      }
       const role = roles[indexRef.current % roles.length];
       let charIndex = 0;
 
       function typeChar(): void {
-        if (cancelled) return;
+        if (cancelled) {
+          return;
+        }
         charIndex++;
         setDisplayed(role.slice(0, charIndex));
         if (charIndex < role.length) {
@@ -73,7 +77,9 @@ export default function IAmACard({
       }
 
       function eraseChar(): void {
-        if (cancelled) return;
+        if (cancelled) {
+          return;
+        }
         charIndex--;
         setDisplayed(role.slice(0, Math.max(0, charIndex)));
         if (charIndex > 0) {

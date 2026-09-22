@@ -18,7 +18,11 @@ void main() {
 }
 `;
 
-function compile(gl: WebGLRenderingContext, type: number, src: string): WebGLShader {
+function compile(
+  gl: WebGLRenderingContext,
+  type: number,
+  src: string,
+): WebGLShader {
   const shader = gl.createShader(type);
   if (!shader) throw new Error("Shader allocation failed");
   gl.shaderSource(shader, src);
@@ -42,14 +46,20 @@ export default function TouchCanvas2D({
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      return;
+    }
     const gl = canvas.getContext("webgl", { antialias: false, alpha: false });
-    if (!gl) return;
+    if (!gl) {
+      return;
+    }
 
     const vs = compile(gl, gl.VERTEX_SHADER, VERTEX_SHADER);
     const fs = compile(gl, gl.FRAGMENT_SHADER, wave2dFrag);
     const program = gl.createProgram();
-    if (!program) return;
+    if (!program) {
+      return;
+    }
     gl.attachShader(program, vs);
     gl.attachShader(program, fs);
     gl.linkProgram(program);
@@ -103,5 +113,7 @@ export default function TouchCanvas2D({
     };
   }, []);
 
-  return <canvas ref={canvasRef} className={`touch-canvas ${className ?? ""}`} />;
+  return (
+    <canvas ref={canvasRef} className={`touch-canvas ${className ?? ""}`} />
+  );
 }

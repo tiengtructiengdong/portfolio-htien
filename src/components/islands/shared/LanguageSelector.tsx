@@ -33,13 +33,19 @@ export default function LanguageSelector({
   const [locale, setLocale] = useAtom(languageAtom);
 
   function handleChange(next: Locale): void {
-    if (next === locale) return;
+    if (next === locale) {
+      return;
+    }
     setLocale(next);
   }
 
   if (inline) {
     return (
-      <div className={`lang-selector ${className}`} role="group" aria-label="Language">
+      <div
+        className={`lang-selector ${className}`}
+        role="group"
+        aria-label="Language"
+      >
         {LOCALES.map(({ value, label }) => (
           <button
             key={value}

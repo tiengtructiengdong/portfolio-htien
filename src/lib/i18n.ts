@@ -43,7 +43,9 @@ export function registerLocale(locale: Locale, strings: LocaleStrings): void {
 // Lazy init — registers all locales the first time a translation is needed.
 let _initialized = false;
 function ensureLocales(): void {
-  if (_initialized) return;
+  if (_initialized) {
+    return;
+  }
   _initialized = true;
   // Dynamic import of locale JSON files
   // The actual strings are loaded in BaseLayout.astro which calls registerLocale.
@@ -89,7 +91,13 @@ export function useLocale(): Locale {
   if (typeof window === "undefined") return "en";
   try {
     const stored = localStorage.getItem("portfolio-lang");
-    if (stored === "ja" || stored === "ko" || stored === "vi" || stored === "en") return stored;
+    if (
+      stored === "ja" ||
+      stored === "ko" ||
+      stored === "vi" ||
+      stored === "en"
+    )
+      return stored;
   } catch {
     // localStorage may be unavailable (private browsing, etc.)
   }
@@ -101,7 +109,8 @@ export function useLocale(): Locale {
  */
 export function localeFromUrl(url: URL): Locale {
   const lang = url.searchParams.get("lang");
-  if (lang === "ja" || lang === "ko" || lang === "vi" || lang === "en") return lang;
+  if (lang === "ja" || lang === "ko" || lang === "vi" || lang === "en")
+    return lang;
   return "en";
 }
 

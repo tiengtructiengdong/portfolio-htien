@@ -5,7 +5,7 @@
     "date_from": "2023-06",
     "date_to": "2025-09",
     "url": "https://aurora.example.com",
-    "image_url": "/fallback/aurora.jpg",
+    "image_url": "https://preview.redd.it/macos-golden-gate-background-for-anyone-that-wants-it-v0-yzfjy05hyi6h1.jpeg?width=640&crop=smart&auto=webp&s=5aa6ff78411dc1fe72381fc78ec7d218c30d434d",
     "projects": [
       {
         "name": "Realtime Collaboration Platform",
@@ -26,7 +26,7 @@
     "date_from": "2021-03",
     "date_to": "2023-05",
     "url": "https://helix.example.com",
-    "image_url": "/fallback/helix.jpg",
+    "image_url": "https://preview.redd.it/macos-golden-gate-v0-lu2hwm11v1ah1.png?width=6016&format=png&auto=webp&s=f14de026cc4b2bb469c2360b743adc368238aead",
     "projects": [
       {
         "name": "3D Product Configurator",

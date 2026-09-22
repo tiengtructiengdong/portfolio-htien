@@ -40,7 +40,9 @@ export default function WorkHistoryCard() {
   }, []);
 
   useEffect(() => {
-    if (!selected) return;
+    if (!selected) {
+      return;
+    }
     const onPop = () => setSelected(null);
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -68,7 +70,9 @@ export default function WorkHistoryCard() {
   }, []);
 
   useEffect(() => {
-    if (!selected) return;
+    if (!selected) {
+      return;
+    }
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
     };

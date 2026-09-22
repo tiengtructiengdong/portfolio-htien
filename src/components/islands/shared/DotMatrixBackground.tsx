@@ -112,9 +112,13 @@ export default function DotMatrixBackground({
 
   useEffect(() => {
     const canvasEl = canvasRef.current;
-    if (!canvasEl) return;
+    if (!canvasEl) {
+      return;
+    }
     const context = canvasEl.getContext("2d", { alpha: true });
-    if (!context) return;
+    if (!context) {
+      return;
+    }
 
     // Capture as non-null locals so closures retain the narrowing.
     const canvas: HTMLCanvasElement = canvasEl;
