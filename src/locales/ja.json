@@ -47,5 +47,15 @@
     "back": "← 戻る",
     "link": "リンク ↗",
     "close": "閉じる"
+  },
+  "typing_test": {
+    "title": "タイピングテスト",
+    "start": "テスト開始",
+    "restart": "やり直す",
+    "wpm": "WPM",
+    "accuracy": "正確率",
+    "time": "時間",
+    "idle_prompt": "「テスト開始」を押して60秒間のタイピングテストを始めてください。",
+    "finished": "テスト完了！"
   }
 }

@@ -3,8 +3,12 @@
  * Shared content for a single work history entry.
  * Used in both the desktop modal and the mobile detail page.
  */
+import { useAtom } from "jotai";
 import type { WorkHistoryEntry } from "@lib/work-history";
 import { formatDateRange } from "@lib/work-history";
+import { languageAtom } from "@stores/info";
+import { t } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
 import {
   ACCENT_HEADING,
   BODY,
@@ -20,6 +24,7 @@ export interface CompanyDetailContentProps {
 export default function CompanyDetailContent({
   entry,
 }: CompanyDetailContentProps) {
+  const [locale] = useAtom(languageAtom);
   return (
     <div className="flex flex-col gap-6">
       {/* Header: company name + period */}
@@ -56,7 +61,9 @@ export default function CompanyDetailContent({
 
       {/* Projects */}
       <div className="flex flex-col gap-4">
-        <h3 className={ACCENT_HEADING}>Projects</h3>
+        <h3 className={ACCENT_HEADING}>
+          {t(locale as Locale, "company_history.projects")}
+        </h3>
         {entry.projects.map((project, i) => (
           <div key={i} className={PROJECT_CARD}>
             <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
@@ -70,7 +77,7 @@ export default function CompanyDetailContent({
                   rel="noopener noreferrer"
                   className="font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300"
                 >
-                  Link ↗
+                  {t(locale as Locale, "company_history.link")} ↗
                 </a>
               )}
             </div>

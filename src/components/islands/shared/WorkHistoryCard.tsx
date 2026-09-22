@@ -8,9 +8,13 @@
  * - Mobile: clicking navigates to /company/{slug} (real page).
  */
 import { useState, useEffect, useCallback } from "react";
+import { useAtom } from "jotai";
 import type { WorkHistoryEntry } from "@lib/work-history";
 import { workHistory, formatDateRange } from "@lib/work-history";
 import { readViewport } from "@lib/viewport";
+import { languageAtom } from "@stores/info";
+import { t } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
 import {
   CARD,
   ACCENT_HEADING,
@@ -29,6 +33,7 @@ import {
 import CompanyDetailContent from "./CompanyDetailContent";
 
 export default function WorkHistoryCard() {
+  const [locale] = useAtom(languageAtom);
   const [selected, setSelected] = useState<WorkHistoryEntry | null>(null);
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -83,7 +88,9 @@ export default function WorkHistoryCard() {
   return (
     <>
       <div className={CARD}>
-        <h2 className={`${ACCENT_HEADING} mb-4`}>Work History</h2>
+        <h2 className={`${ACCENT_HEADING} mb-4`}>
+          {t(locale as Locale, "company_history.title")}
+        </h2>
         <div className="flex flex-col">
           {workHistory.map((entry) => (
             <div key={entry.slug} className={TIMELINE_ITEM}>
@@ -104,6 +111,16 @@ export default function WorkHistoryCard() {
                 <div className={PERIOD_TEXT}>
                   {formatDateRange(entry.date_from, entry.date_to)}
                 </div>
+              </div>
+              <div>
+                {/* Thumbnail - square */}
+                {entry.image_url && (
+                  <img
+                    src={entry.image_url}
+                    alt={`${entry.company_name} logo`}
+                    className="h-14 w-14 rounded-md object-cover"
+                  />
+                )}
               </div>
             </div>
           ))}

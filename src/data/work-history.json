@@ -47,7 +47,7 @@
     "date_from": "2019-08",
     "date_to": "2021-02",
     "url": "https://tessera.example.com",
-    "image_url": "/fallback/tessera.jpg",
+    "image_url": "https://static1.squarespace.com/static/5e949a92e17d55230cd1d44f/649a467765854c170cc4a81b/6a272359ff18687747cdd33e/1780958274580/GoldenGate_3x2.png?format=1500w",
     "projects": [
       {
         "name": "Data Visualization Dashboard",

@@ -47,5 +47,15 @@
     "back": "← Back",
     "link": "Link ↗",
     "close": "Close"
+  },
+  "typing_test": {
+    "title": "Typing Test",
+    "start": "Start Test",
+    "restart": "Restart",
+    "wpm": "WPM",
+    "accuracy": "Accuracy",
+    "time": "Time",
+    "idle_prompt": "Press “Start Test” to begin a 60-second typing test.",
+    "finished": "Test complete!"
   }
 }

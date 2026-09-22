@@ -47,5 +47,15 @@
     "back": "← Quay lại",
     "link": "Liên kết ↗",
     "close": "Đóng"
+  },
+  "typing_test": {
+    "title": "Kiểm tra gõ phím",
+    "start": "Bắt đầu",
+    "restart": "Làm lại",
+    "wpm": "WPM",
+    "accuracy": "Độ chính xác",
+    "time": "Thời gian",
+    "idle_prompt": "Nhấn “Bắt đầu” để làm bài kiểm tra gõ phím 60 giây.",
+    "finished": "Hoàn thành!"
   }
 }

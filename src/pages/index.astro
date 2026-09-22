@@ -13,6 +13,7 @@ import clsx from "clsx";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import IAmACard from "@components/islands/shared/IAmACard.tsx";
 import WorkHistoryCard from "@components/islands/shared/WorkHistoryCard.tsx";
+import TypingTestCard from "@components/islands/shared/TypingTestCard.tsx";
 import AboutCard from "@components/dom/shared/AboutCard.astro";
 import { localeFromUrl } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
@@ -32,9 +33,6 @@ const locale: Locale = localeFromUrl(Astro.url);
   <div class={clsx(SECOND_ROW, "mt-4 sm:mt-6")}>
     <div class={SECOND_ROW_LEFT}>
       <WorkHistoryCard client:load />
-    </div>
-    <div class={SECOND_ROW_RIGHT}>
-      {/* Placeholder for future cards */}
     </div>
   </div>
 </BaseLayout>
