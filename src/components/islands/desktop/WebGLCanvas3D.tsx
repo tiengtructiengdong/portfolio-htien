@@ -46,12 +46,11 @@ function RaymarchScene({ pointer, scroll }: SceneProps): React.ReactElement {
   }, [size, uniforms]);
 
   useFrame((state) => {
-    if (!matRef.current) return;
+    if (!matRef.current) {
+      return;
+    }
     uniforms.uTime.value = state.clock.elapsedTime;
-    uniforms.uMouse.value.lerp(
-      new THREE.Vector2(pointer.x, pointer.y),
-      0.08,
-    );
+    uniforms.uMouse.value.lerp(new THREE.Vector2(pointer.x, pointer.y), 0.08);
     uniforms.uScroll.value = THREE.MathUtils.lerp(
       uniforms.uScroll.value,
       scroll,
@@ -89,7 +88,11 @@ export default function WebGLCanvas3D({
     <Canvas
       className={className}
       camera={{ position: [0, 0, 6], fov: 60 }}
-      gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
+      gl={{
+        antialias: true,
+        alpha: false,
+        powerPreference: "high-performance",
+      }}
       dpr={[1, 2]}
     >
       <RaymarchScene pointer={pointer} scroll={scroll} />

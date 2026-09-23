@@ -1,0 +1,28 @@
+---
+/**
+ * AboutCard.astro
+ * Static "About" card (Zero JS).
+ * Uses locale keys: about.title, about.bio
+ */
+import clsx from "clsx";
+import { useTranslations } from "@lib/i18n";
+import type { Locale } from "@lib/i18n";
+import { CARD, ACCENT_HEADING, BODY } from "@lib/classes";
+
+export interface Props {
+  lang?: Locale;
+  class?: string;
+}
+
+const { lang: locale = "en", class: className = "" } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<div class={clsx(CARD, className)}>
+  <h2 class={clsx(ACCENT_HEADING, "mb-3")}>
+    {t("about.title")}
+  </h2>
+  <p class={BODY}>
+    {t("about.bio")}
+  </p>
+</div>

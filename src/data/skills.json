@@ -1,0 +1,101 @@
+[
+  {
+    "category": "Frontend",
+    "skills": [
+      {
+        "name": "React",
+        "efficiency": 0.95,
+        "experienced_since": 1483228800000,
+        "color": "#61dafb",
+        "extra_notes": "Deep expertise in hooks, suspense, server components, and large-scale state management with Jotai/Redux."
+      },
+      {
+        "name": "TypeScript",
+        "efficiency": 0.9,
+        "experienced_since": 1514764800000,
+        "color": "#3178c6",
+        "extra_notes": "Type-driven design, generics, conditional types, and strict-mode codebases."
+      },
+      {
+        "name": "Tailwind CSS",
+        "efficiency": 0.9,
+        "experienced_since": 1577836800000,
+        "color": "#38bdf8",
+        "extra_notes": "Utility-first workflows, custom theme tokens, and Tailwind v4 @theme configuration."
+      },
+      {
+        "name": "Astro",
+        "efficiency": 0.8,
+        "experienced_since": 1640995200000,
+        "color": "#ff5d01",
+        "extra_notes": "Islands architecture, partial hydration, and content collections for marketing + apps."
+      }
+    ]
+  },
+  {
+    "category": "Backend",
+    "skills": [
+      {
+        "name": "Node.js",
+        "efficiency": 0.9,
+        "experienced_since": 1483228800000,
+        "color": "#83cd29",
+        "extra_notes": "High-throughput services, streams, worker threads, and edge runtimes."
+      },
+      {
+        "name": "PostgreSQL",
+        "efficiency": 0.8,
+        "experienced_since": 1514764800000,
+        "color": "#4169e1",
+        "extra_notes": "Schema design, indexing, CTEs, and query optimization at scale."
+      },
+      {
+        "name": "Python",
+        "efficiency": 0.75,
+        "experienced_since": 1451606400000,
+        "color": "#ffd43b",
+        "extra_notes": "FastAPI services, data pipelines, and scripting for ML workflows."
+      },
+      {
+        "name": "Go",
+        "efficiency": 0.6,
+        "experienced_since": 1609459200000,
+        "color": "#00add8",
+        "extra_notes": "Concurrent services with goroutines, channels, and clean module layout."
+      }
+    ]
+  },
+  {
+    "category": "AI",
+    "skills": [
+      {
+        "name": "PyTorch",
+        "efficiency": 0.8,
+        "experienced_since": 1577836800000,
+        "color": "#ee4c2c",
+        "extra_notes": "Custom training loops, distributed data parallel, and model export to ONNX."
+      },
+      {
+        "name": "LangChain",
+        "efficiency": 0.75,
+        "experienced_since": 1672531200000,
+        "color": "#1c3c3c",
+        "extra_notes": "RAG pipelines, agents, and tool-calling orchestration with structured output."
+      },
+      {
+        "name": "OpenAI API",
+        "efficiency": 0.85,
+        "experienced_since": 1672531200000,
+        "color": "#10a37f",
+        "extra_notes": "Streaming, function calling, embeddings, and cost-aware production patterns."
+      },
+      {
+        "name": "TensorFlow",
+        "efficiency": 0.7,
+        "experienced_since": 1546300800000,
+        "color": "#ff6f00",
+        "extra_notes": "Keras models, TF Serving, and TFLite deployment to edge devices."
+      }
+    ]
+  }
+]

@@ -27,11 +27,41 @@
     "pageTitle": "작품 — htien"
   },
   "about": {
-    "title": "About — htien",
+    "title": "About",
     "heading": "About",
     "bio": "저는 풀스택 개발자이자 크리에이티브 테크놀로지스트로, WebGL, 3D 그래픽, 최신 웹 기술을 활용한 인터랙티브 경험 구축을 좋아합니다."
   },
+  "i_am_a": {
+    "heading": "나는",
+    "developer": "개발자",
+    "creative_technologist": "크리에이티브 테크놀로지스트",
+    "designer": "디자이너",
+    "artist": "아티스트"
+  },
   "meta": {
     "yearRange": "{year}"
+  },
+  "company_history": {
+    "title": "경력",
+    "projects": "프로젝트",
+    "back": "← 뒤로",
+    "link": "링크 ↗",
+    "close": "닫기"
+  },
+  "skills": {
+    "title": "스킬",
+    "years": "년"
+  },
+  "typing_test": {
+    "title": "타이핑 테스트",
+    "start": "테스트 시작",
+    "restart": "다시 시작",
+    "wpm": "WPM",
+    "accuracy": "정확도",
+    "time": "시간",
+    "idle_prompt": "Ctrl+Shift+Enter를 눌러 테스트를 시작하세요.",
+    "finished": "테스트 완료!",
+    "words": "단어",
+    "hint": "Ctrl+Shift+Enter로 시작 · Backspace로 삭제"
   }
 }

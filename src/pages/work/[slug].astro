@@ -3,10 +3,18 @@
  * work/[slug].astro
  * Dynamic project detail page. getStaticPaths() enumerates the
  * same dataset used on index.astro.
+ *
+ * Background and header are provided by BaseLayout.
  */
 import BaseLayout from "@layouts/BaseLayout.astro";
 import type { Project } from "@components/dom/desktop/DesktopProjectGrid.astro";
 import { projects } from "@lib/projects";
+import {
+  BACK_LINK,
+  COVER_IMG,
+  BODY_MUTED,
+  FLEX_HEADER,
+} from "@lib/classes";
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -22,59 +30,28 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<BaseLayout title={`another — htien`} description={`${project.title}, ${project.category} (${project.year})`}>
-  <article class="work">
-    <a class="work__back" href="/#work">← Back to work</a>
-    <header class="work__header">
-      <h1 class="work__title">{project.title}</h1>
-      <p class="work__meta">{project.category} — {project.year}</p>
+<BaseLayout title={`${project.title} — htien`} description={`${project.title}, ${project.category} (${project.year})`}>
+  <article class="mx-auto flex max-w-4xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+    <a class={BACK_LINK} href="/#work">
+      ← Back to work
+    </a>
+    <header class={FLEX_HEADER}>
+      <h1 class="text-2xl font-semibold tracking-tight sm:text-4xl">
+        {project.title}
+      </h1>
+      <p class="font-mono text-sm text-[var(--color-fg-muted)]">
+        {project.category} — {project.year}
+      </p>
     </header>
-    <img class="work__cover" src={project.cover} alt={project.title} width="1280" height="800" />
-    <div class="work__body">
+    <img
+      class={COVER_IMG}
+      src={project.cover}
+      alt={project.title}
+      width="1280"
+      height="800"
+    />
+    <div class={BODY_MUTED}>
       <slot />
     </div>
   </article>
 </BaseLayout>
-
-<style>
-  .work {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: var(--space-xl) var(--gutter);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-  }
-  .work__back {
-    color: var(--color-fg-muted);
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-  }
-  .work__header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-md);
-  }
-  .work__title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-  .work__meta {
-    font-family: var(--font-mono);
-    color: var(--color-fg-muted);
-  }
-  .work__cover {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    border-radius: var(--radius);
-    background: var(--color-bg-elevated);
-  }
-  .work__body {
-    max-width: 65ch;
-    color: var(--color-fg-muted);
-    line-height: 1.7;
-  }
-</style>

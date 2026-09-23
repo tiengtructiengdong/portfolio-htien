@@ -27,11 +27,41 @@
     "pageTitle": "tác phẩm — htien"
   },
   "about": {
-    "title": "About — htien",
+    "title": "About",
     "heading": "About",
     "bio": "Tôi là một lập trình viên full-stack và nhà công nghệ sáng tạo, yêu thích xây dựng những trải nghiệm tương tác với WebGL, đồ họa 3D và các công nghệ web hiện đại."
   },
+  "i_am_a": {
+    "heading": "Tôi là một",
+    "developer": "lập trình viên",
+    "creative_technologist": "nhà công nghệ sáng tạo",
+    "designer": "nhà thiết kế",
+    "artist": "nghệ sĩ"
+  },
   "meta": {
     "yearRange": "{year}"
+  },
+  "company_history": {
+    "title": "Lịch sử làm việc",
+    "projects": "Dự án",
+    "back": "← Quay lại",
+    "link": "Liên kết ↗",
+    "close": "Đóng"
+  },
+  "skills": {
+    "title": "Kỹ năng",
+    "years": "năm"
+  },
+  "typing_test": {
+    "title": "Kiểm tra gõ phím",
+    "start": "Bắt đầu",
+    "restart": "Làm lại",
+    "wpm": "WPM",
+    "accuracy": "Độ chính xác",
+    "time": "Thời gian",
+    "idle_prompt": "Nhấn Ctrl+Shift+Enter để bắt đầu bài kiểm tra.",
+    "finished": "Hoàn thành!",
+    "words": "Từ",
+    "hint": "Nhấn Ctrl+Shift+Enter để bắt đầu · Backspace để xóa"
   }
 }

@@ -27,11 +27,41 @@
     "pageTitle": "作品 — htien"
   },
   "about": {
-    "title": "About — htien",
+    "title": "About",
     "heading": "About",
     "bio": "フルスタック開発者兼クリエイティブテクノロジストです。WebGL、3Dグラフィックス、モダンなウェブ技術を使ったインタラクティブな体験の構築を得意としています。"
   },
+  "i_am_a": {
+    "heading": "私は",
+    "developer": "開発者",
+    "creative_technologist": "クリエイティブテクノロジスト",
+    "designer": "デザイナー",
+    "artist": "アーティスト"
+  },
   "meta": {
     "yearRange": "{year}"
+  },
+  "company_history": {
+    "title": "職歴",
+    "projects": "プロジェクト",
+    "back": "← 戻る",
+    "link": "リンク ↗",
+    "close": "閉じる"
+  },
+  "skills": {
+    "title": "スキル",
+    "years": "年"
+  },
+  "typing_test": {
+    "title": "タイピングテスト",
+    "start": "テスト開始",
+    "restart": "やり直す",
+    "wpm": "WPM",
+    "accuracy": "正確率",
+    "time": "時間",
+    "idle_prompt": "Ctrl+Shift+Enter を押してテストを開始してください。",
+    "finished": "テスト完了！",
+    "words": "単語数",
+    "hint": "Ctrl+Shift+Enter で開始 · Backspace で削除"
   }
 }

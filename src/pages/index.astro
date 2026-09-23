@@ -1,53 +1,53 @@
 ---
 /**
  * index.astro
- * Entry page configuring conditional hydration.
  *
- * Desktop and mobile shells are both server-rendered; the visible one
- * is selected via CSS media queries. Islands hydrate per-device:
- *   - Desktop: WebGLCanvas3D + ProjectFilter
- *   - Mobile:  TouchCanvas2D + MobileNavigation + ProjectFilter
+ * New layout:
+ *  - DotMatrixBackground (fixed, full-screen, behind all content) — in BaseLayout
+ *  - Header with brand + language selector — in BaseLayout
+ *  - First row: 2 cards (About + "I am a" terminal)
+ *    → row on desktop, column on mobile
+ *  - Second row: WorkHistoryCard (1/3) + SkillCard (2/3)
  */
-import DesktopLayout from "@layouts/DesktopLayout.astro";
-import MobileLayout from "@layouts/MobileLayout.astro";
-import DesktopHeader from "@components/dom/desktop/DesktopHeader.astro";
-import DesktopProjectGrid from "@components/dom/desktop/DesktopProjectGrid.astro";
-import MobileHeader from "@components/dom/mobile/MobileHeader.astro";
-import MobileProjectList from "@components/dom/mobile/MobileProjectList.astro";
-import WebGLCanvas3D from "@components/islands/desktop/WebGLCanvas3D.tsx";
-import TouchCanvas2D from "@components/islands/mobile/TouchCanvas2D.tsx";
-import MobileNavigation from "@components/islands/mobile/MobileNavigation.tsx";
-import ProjectFilter from "@components/islands/shared/ProjectFilter.tsx";
-import LanguageSelector from "@components/islands/shared/LanguageSelector";
-import { projects } from "@lib/projects";
+import clsx from "clsx";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import IAmACard from "@components/islands/shared/IAmACard.tsx";
+import WorkHistoryCard from "@components/islands/shared/WorkHistoryCard.tsx";
+import SkillCard from "@components/islands/shared/SkillCard.tsx";
+import TypingTestCard from "@components/islands/shared/TypingTestCard.tsx";
+import AboutCard from "@components/dom/shared/AboutCard.astro";
 import { localeFromUrl } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
+import {
+  SECOND_ROW,
+  SECOND_ROW_LEFT,
+  SECOND_ROW_RIGHT,
+  THIRD_ROW,
+  DESKTOP_ONLY,
+} from "@lib/classes";
 
 const locale: Locale = localeFromUrl(Astro.url);
 ---
 
-{/* ============ DESKTOP ============ */}
-<DesktopLayout lang={locale}>
-  <DesktopHeader slot="header" lang={locale}>
-    <LanguageSelector slot="actions" client:load inline />
-  </DesktopHeader>
-  <aside slot="aside">
-    <ProjectFilter client:load />
-  </aside>
-
-  <div class="webgl-scene">
-    <WebGLCanvas3D client:only="react" className="webgl-scene__canvas" />
+<BaseLayout lang={locale}>
+  {/* First row: 2 cards → row on desktop, column on mobile */}
+  <div class="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
+    <AboutCard lang={locale} />
+    <IAmACard client:load />
   </div>
-  <DesktopProjectGrid projects={projects} />
-</DesktopLayout>
 
-{/* ============ MOBILE ============ */}
-<MobileLayout lang={locale}>
-  <MobileHeader slot="header">
-    <LanguageSelector slot="actions" client:load inline />
-  </MobileHeader>
-  <MobileNavigation client:load />
-  <TouchCanvas2D client:only="react" />
-  <ProjectFilter client:load />
-  <MobileProjectList projects={projects} />
-</MobileLayout>
+  {/* Second row: WorkHistoryCard (1/3) + SkillCard (2/3) */}
+  <div class={clsx(SECOND_ROW, "mt-4 sm:mt-6")}>
+    <div class={SECOND_ROW_LEFT}>
+      <WorkHistoryCard client:load />
+    </div>
+    <div class={SECOND_ROW_RIGHT}>
+      <SkillCard client:load />
+    </div>
+  </div>
+
+  {/* Third row: Typing Test card (desktop only) */}
+  <div class={clsx(THIRD_ROW, DESKTOP_ONLY)}>
+    <TypingTestCard client:load />
+  </div>
+</BaseLayout>

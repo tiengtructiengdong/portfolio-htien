@@ -1,10 +1,12 @@
 ---
 /**
  * MobileLayout.astro
- * Single-column touch layout wrapper.
+ * Single-column flex layout for mobile.
+ * Hidden above 1280px (mirrored in DesktopLayout).
  */
-import "../styles/mobile.css";
+import clsx from "clsx";
 import BaseLayout from "./BaseLayout.astro";
+import { MOBILE_SHELL } from "@lib/classes";
 
 export interface Props {
   title?: string;
@@ -16,8 +18,10 @@ const { title, description, lang } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} lang={lang}>
-  <div class="mobile-shell">
+  <div class={MOBILE_SHELL}>
     <slot name="header" />
-    <main><slot /></main>
+    <main>
+      <slot />
+    </main>
   </div>
 </BaseLayout>

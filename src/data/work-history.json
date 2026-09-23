@@ -1,0 +1,60 @@
+[
+  {
+    "company_name": "Aurora Labs",
+    "slug": "aurora-labs",
+    "date_from": "2023-06",
+    "date_to": "2025-09",
+    "url": "https://aurora.example.com",
+    "image_url": "https://preview.redd.it/macos-golden-gate-background-for-anyone-that-wants-it-v0-yzfjy05hyi6h1.jpeg?width=640&crop=smart&auto=webp&s=5aa6ff78411dc1fe72381fc78ec7d218c30d434d",
+    "projects": [
+      {
+        "name": "Realtime Collaboration Platform",
+        "tech_stack": ["React", "WebSocket", "Node.js", "PostgreSQL"],
+        "problem_solved": "Built a realtime collaborative editing platform supporting 10k+ concurrent users with conflict-free replicated data types (CRDTs).",
+        "url": "https://aurora.example.com/realtime"
+      },
+      {
+        "name": "Design System Overhaul",
+        "tech_stack": ["TypeScript", "Storybook", "Figma API"],
+        "problem_solved": "Migrated a fragmented component library into a unified design system, reducing UI bugs by 40% and improving dev velocity."
+      }
+    ]
+  },
+  {
+    "company_name": "Helix Studio",
+    "slug": "helix-studio",
+    "date_from": "2021-03",
+    "date_to": "2023-05",
+    "url": "https://helix.example.com",
+    "image_url": "https://preview.redd.it/macos-golden-gate-v0-lu2hwm11v1ah1.png?width=6016&format=png&auto=webp&s=f14de026cc4b2bb469c2360b743adc368238aead",
+    "projects": [
+      {
+        "name": "3D Product Configurator",
+        "tech_stack": ["Three.js", "GLSL", "React", "Vite"],
+        "problem_solved": "Created an interactive 3D product configurator with realtime material editing, boosting conversion rates by 25%.",
+        "url": "https://helix.example.com/configurator"
+      },
+      {
+        "name": "WebGL Particle Engine",
+        "tech_stack": ["WebGL", "TypeScript", "Web Workers"],
+        "problem_solved": "Developed a GPU-accelerated particle engine rendering 1M+ particles at 60fps on mid-range hardware."
+      }
+    ]
+  },
+  {
+    "company_name": "Tessera Inc",
+    "slug": "tessera-inc",
+    "date_from": "2019-08",
+    "date_to": "2021-02",
+    "url": "https://tessera.example.com",
+    "image_url": "https://static1.squarespace.com/static/5e949a92e17d55230cd1d44f/649a467765854c170cc4a81b/6a272359ff18687747cdd33e/1780958274580/GoldenGate_3x2.png?format=1500w",
+    "projects": [
+      {
+        "name": "Data Visualization Dashboard",
+        "tech_stack": ["D3.js", "React", "GraphQL", "Python"],
+        "problem_solved": "Built a real-time analytics dashboard processing 50M+ events/day with sub-second query latency.",
+        "url": "https://tessera.example.com/dashboard"
+      }
+    ]
+  }
+]

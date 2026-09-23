@@ -27,11 +27,41 @@
     "pageTitle": "another — htien"
   },
   "about": {
-    "title": "About — htien",
+    "title": "About",
     "heading": "About",
     "bio": "I'm a full-stack developer and creative technologist who loves building interactive experiences with WebGL, 3D graphics, and modern web technologies."
   },
+  "i_am_a": {
+    "heading": "I am a",
+    "developer": "developer",
+    "creative_technologist": "creative technologist",
+    "designer": "designer",
+    "artist": "artist"
+  },
   "meta": {
     "yearRange": "{year}"
+  },
+  "company_history": {
+    "title": "Work History",
+    "projects": "Projects",
+    "back": "← Back",
+    "link": "Link ↗",
+    "close": "Close"
+  },
+  "skills": {
+    "title": "Skills",
+    "years": "years"
+  },
+  "typing_test": {
+    "title": "Typing Test",
+    "start": "Start Test",
+    "restart": "Restart",
+    "wpm": "WPM",
+    "accuracy": "Accuracy",
+    "time": "Time",
+    "idle_prompt": "Press Ctrl+Shift+Enter to start the test.",
+    "finished": "Test complete!",
+    "words": "Words",
+    "hint": "Press Ctrl+Shift+Enter to start · Backspace to delete"
   }
 }

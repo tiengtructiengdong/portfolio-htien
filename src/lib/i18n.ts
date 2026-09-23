@@ -15,6 +15,10 @@
  *
  * The t() function signature takes the locale as the first argument
  * so it works identically in both SSR and CSR contexts without hooks.
+ *
+ * On the client, locales are auto-registered from the bundled JSON files
+ * so that React islands can translate without needing a server-side
+ * registerLocale call.
  */
 
 // --------------- Types ---------------
@@ -38,16 +42,41 @@ export function registerLocale(locale: Locale, strings: LocaleStrings): void {
   }
 }
 
-// --------------- Init (auto-run on first import) ---------------
+// --------------- Client-side auto-registration ---------------
 
-// Lazy init — registers all locales the first time a translation is needed.
 let _initialized = false;
+
+/**
+ * On the client, eagerly import and register all locale JSON files so that
+ * the t() function works without a prior registerLocale() call from an
+ * Astro layout. On the server this is a no-op — BaseLayout.astro handles
+ * registration.
+ */
 function ensureLocales(): void {
   if (_initialized) return;
   _initialized = true;
-  // Dynamic import of locale JSON files
-  // The actual strings are loaded in BaseLayout.astro which calls registerLocale.
-  // This is a no-op fallback if no one has registered yet.
+
+  if (typeof window === "undefined") {
+    // Server-side: registration is handled by BaseLayout.astro
+    return;
+  }
+
+  // Client-side: dynamically import all locale JSON files and register them.
+  // Vite will bundle these into the client chunk that imports this module.
+  Promise.all([
+    import("../locales/en.json").then((m) => registerLocale("en", m.default ?? m)),
+    import("../locales/ja.json").then((m) => registerLocale("ja", m.default ?? m)),
+    import("../locales/ko.json").then((m) => registerLocale("ko", m.default ?? m)),
+    import("../locales/vi.json").then((m) => registerLocale("vi", m.default ?? m)),
+  ]).catch(() => {
+    // Silently fail — t() will return keys as fallback
+  });
+}
+
+// Kick off registration immediately on module load (client-side only).
+// The dynamic imports are hoisted by Vite into the importing chunk.
+if (typeof window !== "undefined") {
+  ensureLocales();
 }
 
 // --------------- Translation function ---------------
@@ -89,7 +118,13 @@ export function useLocale(): Locale {
   if (typeof window === "undefined") return "en";
   try {
     const stored = localStorage.getItem("portfolio-lang");
-    if (stored === "ja" || stored === "ko" || stored === "vi" || stored === "en") return stored;
+    if (
+      stored === "ja" ||
+      stored === "ko" ||
+      stored === "vi" ||
+      stored === "en"
+    )
+      return stored;
   } catch {
     // localStorage may be unavailable (private browsing, etc.)
   }
@@ -101,7 +136,8 @@ export function useLocale(): Locale {
  */
 export function localeFromUrl(url: URL): Locale {
   const lang = url.searchParams.get("lang");
-  if (lang === "ja" || lang === "ko" || lang === "vi" || lang === "en") return lang;
+  if (lang === "ja" || lang === "ko" || lang === "vi" || lang === "en")
+    return lang;
   return "en";
 }
 

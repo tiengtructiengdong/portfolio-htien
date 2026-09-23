@@ -1,11 +1,12 @@
 ---
 /**
  * DesktopLayout.astro
- * Multi-column grid layout.
- * Desktop-only styles are scoped via the .desktop-shell class.
+ * Multi-column grid layout using Tailwind CSS.
+ * Desktop-only — hidden below 1280px (mirrored in MobileLayout).
  */
-import "../styles/desktop.css";
+import clsx from "clsx";
 import BaseLayout from "./BaseLayout.astro";
+import { DESKTOP_SHELL, DESKTOP_ASIDE } from "@lib/classes";
 
 export interface Props {
   title?: string;
@@ -17,9 +18,25 @@ const { title, description, lang } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} lang={lang}>
-  <div class="desktop-shell">
+  <div class={DESKTOP_SHELL}>
     <slot name="header" />
-    <aside><slot name="aside" /></aside>
-    <main><slot /></main>
+    <aside class={DESKTOP_ASIDE}>
+      <slot name="aside" />
+    </aside>
+    <main class="col-start-2 col-end-3 relative z-[2]">
+      <slot />
+    </main>
   </div>
 </BaseLayout>
+
+<style>
+  /* Sticky header spans full width */
+  .desktop-shell > :global(header) {
+    grid-column: 1 / -1;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    background: rgba(10, 10, 15, 0.6);
+  }
+</style>
