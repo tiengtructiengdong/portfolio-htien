@@ -1,5 +1,5 @@
 /**
- * IAmACard.tsx
+ * i-am-a-card/index.tsx
  *
  * "I am a" card with a console / terminal typing effect.
  *

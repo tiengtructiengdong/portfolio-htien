@@ -49,7 +49,7 @@ let _initialized = false;
 /**
  * On the client, eagerly import and register all locale JSON files so that
  * the t() function works without a prior registerLocale() call from an
- * Astro layout. On the server this is a no-op — BaseLayout.astro handles
+ * Astro layout. On the server this is a no-op — base-layout.astro handles
  * registration.
  */
 function ensureLocales(): void {
@@ -59,17 +59,25 @@ function ensureLocales(): void {
   _initialized = true;
 
   if (typeof window === "undefined") {
-    // Server-side: registration is handled by BaseLayout.astro
+    // Server-side: registration is handled by base-layout.astro
     return;
   }
 
   // Client-side: dynamically import all locale JSON files and register them.
   // Vite will bundle these into the client chunk that imports this module.
   Promise.all([
-    import("../locales/en.json").then((m) => registerLocale("en", m.default ?? m)),
-    import("../locales/ja.json").then((m) => registerLocale("ja", m.default ?? m)),
-    import("../locales/ko.json").then((m) => registerLocale("ko", m.default ?? m)),
-    import("../locales/vi.json").then((m) => registerLocale("vi", m.default ?? m)),
+    import("../locales/en.json").then((m) =>
+      registerLocale("en", m.default ?? m),
+    ),
+    import("../locales/ja.json").then((m) =>
+      registerLocale("ja", m.default ?? m),
+    ),
+    import("../locales/ko.json").then((m) =>
+      registerLocale("ko", m.default ?? m),
+    ),
+    import("../locales/vi.json").then((m) =>
+      registerLocale("vi", m.default ?? m),
+    ),
   ]).catch(() => {
     // Silently fail — t() will return keys as fallback
   });

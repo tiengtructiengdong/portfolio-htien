@@ -1,5 +1,5 @@
 /**
- * TouchCanvas2D.tsx
+ * touch-canvas-2d/index.tsx
  * Lightweight 2D Canvas / Gyroscope handler for mobile.
  * Runs the wave2d fragment shader on a fullscreen quad via raw WebGL.
  *
@@ -8,16 +8,8 @@
 import { useEffect, useRef } from "react";
 import clsx from "clsx";
 import wave2dFrag from "@shaders/mobile/wave2d.frag?raw";
+import wave2dVert from "@shaders/mobile/wave2d.vs?raw";
 import { createTouchState, attachTouch } from "@lib/touch";
-
-const VERTEX_SHADER = `
-attribute vec2 aPos;
-varying vec2 vUv;
-void main() {
-  vUv = aPos * 0.5 + 0.5;
-  gl_Position = vec4(aPos, 0.0, 1.0);
-}
-`;
 
 function compile(
   gl: WebGLRenderingContext,
@@ -57,7 +49,7 @@ export default function TouchCanvas2D({
       return;
     }
 
-    const vs = compile(gl, gl.VERTEX_SHADER, VERTEX_SHADER);
+    const vs = compile(gl, gl.VERTEX_SHADER, wave2dVert);
     const fs = compile(gl, gl.FRAGMENT_SHADER, wave2dFrag);
     const program = gl.createProgram();
     if (!program) {

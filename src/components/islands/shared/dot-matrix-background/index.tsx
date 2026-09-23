@@ -1,5 +1,5 @@
 /**
- * DotMatrixBackground.tsx
+ * dot-matrix-background/index.tsx
  *
  * Full-viewport dot-matrix particle background.
  *

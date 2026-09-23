@@ -1,17 +1,17 @@
 ---
 /**
- * DesktopLayout.astro
+ * desktop-layout.astro
  * Multi-column grid layout using Tailwind CSS.
  * Desktop-only — hidden below 1280px (mirrored in MobileLayout).
  */
 import clsx from "clsx";
-import BaseLayout from "./BaseLayout.astro";
+import BaseLayout from "./base-layout.astro";
 import { DESKTOP_SHELL, DESKTOP_ASIDE } from "@lib/classes";
 
 export interface Props {
   title?: string;
   description?: string;
-  lang?: import("./BaseLayout.astro").Props["lang"];
+  lang?: import("./base-layout.astro").Props["lang"];
 }
 
 const { title, description, lang } = Astro.props;

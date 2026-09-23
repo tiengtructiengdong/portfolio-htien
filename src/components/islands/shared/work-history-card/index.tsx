@@ -1,5 +1,5 @@
 /**
- * WorkHistoryCard.tsx
+ * work-history-card/index.tsx
  * Timeline list of work history entries.
  *
  * - Desktop: clicking a company opens a Mac-style modal popup.
@@ -15,22 +15,23 @@ import { readViewport } from "@lib/viewport";
 import { languageAtom } from "@stores/info";
 import { t } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
+import { CARD, ACCENT_HEADING } from "@lib/classes";
 import {
-  CARD,
-  ACCENT_HEADING,
   TIMELINE_ITEM,
   TIMELINE_DOT,
   TIMELINE_LINE,
   TIMELINE_CONTENT,
   COMPANY_NAME,
+} from "./classes";
+import {
   PERIOD_TEXT,
   MODAL_OVERLAY,
   MODAL_WINDOW,
   MODAL_TITLE_BAR,
   TRAFFIC_LIGHT,
   MODAL_BODY,
-} from "@lib/classes";
-import CompanyDetailContent from "./CompanyDetailContent";
+} from "../classes";
+import CompanyDetailContent from "../company-detail-content";
 import clsx from "clsx";
 
 export default function WorkHistoryCard() {

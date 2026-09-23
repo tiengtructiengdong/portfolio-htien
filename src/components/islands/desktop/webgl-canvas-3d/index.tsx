@@ -1,5 +1,5 @@
 /**
- * WebGLCanvas3D.tsx
+ * webgl-canvas-3d/index.tsx
  * R3F WebGL canvas with mouse raycasting for the desktop scene.
  *
  * Hydrated client-side only (client:only="react").
@@ -9,14 +9,7 @@ import { useRef, useMemo, useEffect } from "react";
 import { MathUtils, Vector2 } from "three";
 import type { ShaderMaterial } from "three";
 import raymarchFrag from "@shaders/desktop/raymarch.frag?raw";
-
-const VERTEX_SHADER = /* glsl */ `
-  varying vec2 vUv;
-  void main() {
-    vUv = uv;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`;
+import raymarchVert from "@shaders/desktop/raymarch.vs?raw";
 
 interface SceneProps {
   pointer: { x: number; y: number };
@@ -63,7 +56,7 @@ function RaymarchScene({ pointer, scroll }: SceneProps): React.ReactElement {
       <planeGeometry args={[2, 2]} />
       <shaderMaterial
         ref={matRef}
-        vertexShader={VERTEX_SHADER}
+        vertexShader={raymarchVert}
         fragmentShader={raymarchFrag}
         uniforms={uniforms}
       />

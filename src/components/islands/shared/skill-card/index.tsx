@@ -1,5 +1,5 @@
 /**
- * SkillCard.tsx
+ * skill-card/index.tsx
  * Skills card grouped by category (Frontend, Backend, AI).
  *
  * Each skill renders a monospace label + an efficiency bar (0–1).
@@ -17,15 +17,14 @@ import type { Locale } from "@lib/i18n";
 import { readViewport } from "@lib/viewport";
 import type { Skill } from "@lib/skills";
 import { skillCategories, formatExperiencedSince } from "@lib/skills";
+import { CARD, ACCENT_HEADING } from "@lib/classes";
 import {
-  CARD,
-  ACCENT_HEADING,
   MODAL_OVERLAY,
   MODAL_WINDOW,
   MODAL_TITLE_BAR,
   TRAFFIC_LIGHT,
   MODAL_BODY,
-} from "@lib/classes";
+} from "../classes";
 
 export default function SkillCard() {
   const [locale] = useAtom(languageAtom);

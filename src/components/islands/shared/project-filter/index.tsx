@@ -1,5 +1,5 @@
 /**
- * ProjectFilter.tsx
+ * project-filter/index.tsx
  * Cross-device interactive UI island. Filters the server-rendered
  * project grid/list by toggling visibility of [data-category]
  * items. Mounted on both desktop and mobile layouts.

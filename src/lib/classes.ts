@@ -1,8 +1,10 @@
 /**
  * classes.ts
- * Shared Tailwind class constants used across multiple components.
- * Centralising these reduces duplication and makes global style
- * changes easier.
+ * Tailwind class constants shared with Astro layouts, pages, and dom
+ * components (and, for the Astro↔island-shared ones, with island components).
+ *
+ * Island-only and cross-island classes have been distributed into the
+ * corresponding island component folders (and islands/shared/classes.ts).
  */
 import clsx from "clsx";
 
@@ -14,9 +16,6 @@ export const CARD = clsx(
 );
 
 // ── Typography ────────────────────────────────────────────────
-/** Muted mono label (e.g. dates, categories). */
-export const MUTED_MONO = "font-mono text-sm text-[var(--color-fg-muted)]";
-
 /** Accent heading (cyan, mono, small). */
 export const ACCENT_HEADING = "font-mono text-sm font-medium text-cyan-400";
 
@@ -122,70 +121,3 @@ export const THIRD_ROW = "mt-4 sm:mt-6";
 
 /** Desktop-only wrapper (hidden below the `lg` breakpoint). */
 export const DESKTOP_ONLY = "hidden lg:block";
-
-/** Timeline item row (dot + line + content). */
-export const TIMELINE_ITEM = "relative flex gap-4 pb-6 last:pb-0";
-
-/** Timeline dot. */
-export const TIMELINE_DOT = clsx(
-  "mt-1.5 h-3 w-3 shrink-0 rounded-full",
-  "border-2 border-cyan-400/60 bg-[#0d0d18]",
-  "transition-colors hover:border-cyan-400",
-);
-
-/** Timeline vertical line (pseudo-element via class). */
-export const TIMELINE_LINE = clsx(
-  "absolute left-[5px] top-4 bottom-0 w-px",
-  "bg-gradient-to-b from-cyan-400/40 to-transparent",
-);
-
-/** Timeline content (company name + period). */
-export const TIMELINE_CONTENT = clsx(
-  "flex-1 cursor-pointer rounded-md p-2",
-  "transition-colors hover:bg-white/5",
-);
-
-/** Company name in timeline. */
-export const COMPANY_NAME = clsx(
-  "font-mono text-sm font-medium text-[var(--color-fg)]",
-  "transition-colors hover:text-cyan-400",
-);
-
-/** Period text in timeline. */
-export const PERIOD_TEXT = "font-mono text-xs text-[var(--color-fg-muted)]";
-
-// ── Modal (Mac-style window) ──────────────────────────────────
-/** Modal overlay backdrop. */
-export const MODAL_OVERLAY = clsx(
-  "fixed inset-0 z-50 flex items-center justify-center",
-  "bg-black/60 backdrop-blur-sm",
-);
-
-/** Mac-style modal window. */
-export const MODAL_WINDOW = clsx(
-  "relative flex max-h-[85vh] w-full max-w-[800px] flex-col",
-  "overflow-hidden rounded-xl border border-white/10",
-  "bg-[#0d0d18]/95 shadow-2xl backdrop-blur-xl",
-);
-
-/** Mac-style title bar (traffic lights). */
-export const MODAL_TITLE_BAR = clsx(
-  "flex items-center gap-2 border-b border-white/10",
-  "bg-white/5 px-4 py-3",
-);
-
-/** Mac traffic light button. */
-export const TRAFFIC_LIGHT = "!h-3 !w-3 rounded-full";
-
-/** Modal body (scrollable). */
-export const MODAL_BODY = "flex-1 overflow-y-auto p-6";
-
-/** Tech stack badge. */
-export const TECH_BADGE = clsx(
-  "inline-block rounded-md border border-white/10",
-  "bg-white/5 px-2 py-0.5 font-mono text-xs",
-  "text-[var(--color-fg-muted)]",
-);
-
-/** Project card inside modal/detail. */
-export const PROJECT_CARD = "rounded-lg border border-white/10 bg-white/5 p-4";

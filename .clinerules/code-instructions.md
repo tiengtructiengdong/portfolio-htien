@@ -116,6 +116,8 @@ Ultracite enforces strict type safety, accessibility standards, and consistent c
 - Don't use literal numbers that lose precision.
 - All bodies of if-else, for-loop, while-loop and so on, regardless the length, MUST be wrapped in curly brackets.
 - All style class names that involves tailwindcss classes, is longer than 50 characters, or includes concatenations, MUST use `clsx`. Break the long class into multiple, shorter lines and use `clsx(line1,line2,line3...)`. Do not use other syntaxes such as string concatenation (`+` operand) or `${}`.
+- Use kebab case for all file names and folder names.
+- Split the shaders strings to .vs files and import to the code instead of defining as a string inside the code.
 
 ### React and JSX Best Practices
 

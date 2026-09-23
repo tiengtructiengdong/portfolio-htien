@@ -1,5 +1,5 @@
 /**
- * TypingTestCard.tsx
+ * typing-test-card/index.tsx
  * 60-second words-per-minute typing test (desktop only).
  *
  * Behaviour:
@@ -29,7 +29,8 @@ import { generate } from "random-words";
 import { languageAtom } from "@stores/info";
 import { t } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
-import { CARD, ACCENT_HEADING, MUTED_MONO } from "@lib/classes";
+import { CARD, ACCENT_HEADING } from "@lib/classes";
+import { MUTED_MONO } from "./classes";
 
 /** Test duration, in seconds. */
 const TEST_DURATION = 60;

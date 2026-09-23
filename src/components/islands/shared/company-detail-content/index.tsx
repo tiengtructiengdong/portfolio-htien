@@ -1,5 +1,5 @@
 /**
- * CompanyDetailContent.tsx
+ * company-detail-content/index.tsx
  * Shared content for a single work history entry.
  * Used in both the desktop modal and the mobile detail page.
  */
@@ -9,13 +9,9 @@ import { formatDateRange } from "@lib/work-history";
 import { languageAtom } from "@stores/info";
 import { t } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
-import {
-  ACCENT_HEADING,
-  BODY,
-  PERIOD_TEXT,
-  PROJECT_CARD,
-  TECH_BADGE,
-} from "@lib/classes";
+import { ACCENT_HEADING, BODY } from "@lib/classes";
+import { PERIOD_TEXT } from "../classes";
+import { PROJECT_CARD, TECH_BADGE } from "./classes";
 import clsx from "clsx";
 
 export interface CompanyDetailContentProps {

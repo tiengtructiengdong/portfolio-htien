@@ -1,7 +1,7 @@
 /**
- * MobileNavigation.tsx
+ * mobile-navigation/index.tsx
  * Touch-optimized overlay menu. Toggled by the [data-nav-toggle]
- * button rendered statically in MobileHeader.astro.
+ * button rendered statically in mobile-header.astro.
  *
  * Hydrated with client:load so it works without JS-dependent markup.
  */

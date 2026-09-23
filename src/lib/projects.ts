@@ -3,7 +3,7 @@
  * Shared project dataset. Replace this stub with Astro content
  * collections or an API fetch when ready.
  */
-import type { Project } from "@components/dom/desktop/DesktopProjectGrid.astro";
+import type { Project } from "@components/dom/desktop/desktop-project-grid.astro";
 
 export const projects: Project[] = [
   {

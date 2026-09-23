@@ -1,5 +1,5 @@
 /**
- * LanguageSelector.tsx
+ * language-selector/index.tsx
  * A dropdown / button-group to switch the site language.
  *
  * Reads/writes the persisted languageAtom (atomWithStorage).
