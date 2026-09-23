@@ -48,6 +48,10 @@
     "link": "Link ↗",
     "close": "Close"
   },
+  "skills": {
+    "title": "Skills",
+    "since": "since"
+  },
   "typing_test": {
     "title": "Typing Test",
     "start": "Start Test",

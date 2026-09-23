@@ -31,6 +31,7 @@ import {
   MODAL_BODY,
 } from "@lib/classes";
 import CompanyDetailContent from "./CompanyDetailContent";
+import clsx from "clsx";
 
 export default function WorkHistoryCard() {
   const [locale] = useAtom(languageAtom);
@@ -99,7 +100,7 @@ export default function WorkHistoryCard() {
                 <div className={TIMELINE_LINE} />
               </div>
               <div
-                className={TIMELINE_CONTENT}
+                className={clsx(TIMELINE_CONTENT, "flex flex-row")}
                 onClick={() => handleCompanyClick(entry)}
                 role="button"
                 tabIndex={0}
@@ -107,13 +108,14 @@ export default function WorkHistoryCard() {
                   if (e.key === "Enter") handleCompanyClick(entry);
                 }}
               >
-                <div className={COMPANY_NAME}>{entry.company_name}</div>
-                <div className={PERIOD_TEXT}>
-                  {formatDateRange(entry.date_from, entry.date_to)}
+                <div className="flex-1">
+                  <div className={clsx(COMPANY_NAME, "flex-1")}>
+                    {entry.company_name}
+                  </div>
+                  <div className={PERIOD_TEXT}>
+                    {formatDateRange(entry.date_from, entry.date_to)}
+                  </div>
                 </div>
-              </div>
-              <div>
-                {/* Thumbnail - square */}
                 {entry.image_url && (
                   <img
                     src={entry.image_url}

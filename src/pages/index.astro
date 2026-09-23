@@ -7,12 +7,13 @@
  *  - Header with brand + language selector — in BaseLayout
  *  - First row: 2 cards (About + "I am a" terminal)
  *    → row on desktop, column on mobile
- *  - Second row: WorkHistoryCard (1/3) + placeholder (2/3)
+ *  - Second row: WorkHistoryCard (1/3) + SkillCard (2/3)
  */
 import clsx from "clsx";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import IAmACard from "@components/islands/shared/IAmACard.tsx";
 import WorkHistoryCard from "@components/islands/shared/WorkHistoryCard.tsx";
+import SkillCard from "@components/islands/shared/SkillCard.tsx";
 import AboutCard from "@components/dom/shared/AboutCard.astro";
 import { localeFromUrl } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
@@ -28,10 +29,13 @@ const locale: Locale = localeFromUrl(Astro.url);
     <IAmACard client:load />
   </div>
 
-  {/* Second row: WorkHistoryCard (1/3) + placeholder (2/3) */}
+  {/* Second row: WorkHistoryCard (1/3) + SkillCard (2/3) */}
   <div class={clsx(SECOND_ROW, "mt-4 sm:mt-6")}>
     <div class={SECOND_ROW_LEFT}>
       <WorkHistoryCard client:load />
+    </div>
+    <div class={SECOND_ROW_RIGHT}>
+      <SkillCard client:load />
     </div>
   </div>
 </BaseLayout>

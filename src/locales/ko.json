@@ -48,6 +48,10 @@
     "link": "링크 ↗",
     "close": "닫기"
   },
+  "skills": {
+    "title": "스킬",
+    "since": ""
+  },
   "typing_test": {
     "title": "타이핑 테스트",
     "start": "테스트 시작",

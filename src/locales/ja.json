@@ -48,6 +48,10 @@
     "link": "リンク ↗",
     "close": "閉じる"
   },
+  "skills": {
+    "title": "スキル",
+    "since": ""
+  },
   "typing_test": {
     "title": "タイピングテスト",
     "start": "テスト開始",

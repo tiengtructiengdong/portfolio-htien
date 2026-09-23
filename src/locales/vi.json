@@ -48,6 +48,10 @@
     "link": "Liên kết ↗",
     "close": "Đóng"
   },
+  "skills": {
+    "title": "Kỹ năng",
+    "since": "từ"
+  },
   "typing_test": {
     "title": "Kiểm tra gõ phím",
     "start": "Bắt đầu",
