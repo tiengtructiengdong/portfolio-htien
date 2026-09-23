@@ -5,6 +5,7 @@
  * items. Mounted on both desktop and mobile layouts.
  */
 import { useEffect, useMemo, useState } from "react";
+import clsx from "clsx";
 
 export interface ProjectFilterProps {
   /** Selector for the list/grid container rendered by Astro. */
@@ -32,10 +33,12 @@ export default function ProjectFilter({
       container.querySelectorAll<HTMLElement>(itemSelector),
     );
     const found = new Set<string>([DEFAULT_FILTER]);
-    items.forEach((el) => {
+    for (const el of items) {
       const cat = el.dataset.category;
-      if (cat) found.add(cat);
-    });
+      if (cat) {
+        found.add(cat);
+      }
+    }
     setCategories(Array.from(found));
   }, [containerSelector, itemSelector]);
 
@@ -48,11 +51,11 @@ export default function ProjectFilter({
     const items = Array.from(
       container.querySelectorAll<HTMLElement>(itemSelector),
     );
-    items.forEach((el) => {
+    for (const el of items) {
       const cat = el.dataset.category ?? "";
       const visible = active === DEFAULT_FILTER || cat === active;
       el.style.display = visible ? "" : "none";
-    });
+    }
   }, [active, containerSelector, itemSelector]);
 
   const buttons = useMemo(
@@ -61,7 +64,7 @@ export default function ProjectFilter({
         <button
           key={cat}
           type="button"
-          className={`project-filter__btn ${cat === active ? "is-active" : ""}`}
+          className={clsx("project-filter__btn", cat === active && "is-active")}
           onClick={(): void => setActive(cat)}
           aria-pressed={cat === active}
         >

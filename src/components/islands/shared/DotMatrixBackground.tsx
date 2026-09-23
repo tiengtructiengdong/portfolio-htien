@@ -14,6 +14,7 @@
  */
 
 import { useEffect, useRef } from "react";
+import clsx from "clsx";
 
 // ---- Configuration ----------------------------------------------------------
 
@@ -67,8 +68,10 @@ function approach(
   dt: number,
   halfLife: number,
 ): number {
-  if (halfLife <= 0) return target;
-  const alpha = 1 - Math.pow(2, -dt / halfLife);
+  if (halfLife <= 0) {
+    return target;
+  }
+  const alpha = 1 - 2 ** (-dt / halfLife);
   return lerp(current, target, alpha);
 }
 
@@ -193,12 +196,16 @@ export default function DotMatrixBackground({
 
     function onPointerUp(e: PointerEvent): void {
       const p = pointers.get(e.pointerId);
-      if (p) p.active = false;
+      if (p) {
+        p.active = false;
+      }
     }
 
     function onPointerLeave(e: PointerEvent): void {
       const p = pointers.get(e.pointerId);
-      if (p) p.active = false;
+      if (p) {
+        p.active = false;
+      }
     }
 
     // --- Animation loop ------------------------------------------------------
@@ -214,9 +221,11 @@ export default function DotMatrixBackground({
 
       // Collect active pointer positions
       const activePointers: Array<{ x: number; y: number }> = [];
-      pointers.forEach((p) => {
-        if (p.active) activePointers.push({ x: p.x, y: p.y });
-      });
+      for (const p of pointers.values()) {
+        if (p.active) {
+          activePointers.push({ x: p.x, y: p.y });
+        }
+      }
 
       // Diagonal length for gradient normalization
       const diag = Math.sqrt(width * width + height * height);
@@ -232,7 +241,9 @@ export default function DotMatrixBackground({
             const dx = dot.x - activePointers[j].x;
             const dy = dot.y - activePointers[j].y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < minDist) minDist = dist;
+            if (dist < minDist) {
+              minDist = dist;
+            }
           }
           if (minDist < growRadius) {
             // Smooth falloff: dots at center grow to MAX_DOT_RADIUS,
@@ -323,7 +334,7 @@ export default function DotMatrixBackground({
   return (
     <canvas
       ref={canvasRef}
-      className={`fixed inset-0 -z-10 h-full w-full ${className}`}
+      className={clsx("fixed inset-0 -z-10 h-full w-full", className)}
       aria-hidden="true"
     />
   );

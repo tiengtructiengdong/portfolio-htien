@@ -29,7 +29,9 @@ const DEFAULT_STATE: ViewportState = {
  * Falls back to mobile state during SSR (no `window`).
  */
 export function readViewport(): ViewportState {
-  if (typeof window === "undefined") return DEFAULT_STATE;
+  if (typeof window === "undefined") {
+    return DEFAULT_STATE;
+  }
   const w = window.innerWidth;
   return {
     isMobile: w < BREAKPOINTS.tablet,
@@ -43,7 +45,9 @@ export function readViewport(): ViewportState {
  * Returns a disposer.
  */
 export function subscribeViewport(cb: (s: ViewportState) => void): () => void {
-  if (typeof window === "undefined") return () => {};
+  if (typeof window === "undefined") {
+    return () => {};
+  }
   const mql = window.matchMedia(`(min-width: ${BREAKPOINTS.desktop}px)`);
   const handler = (): void => cb(readViewport());
   mql.addEventListener("change", handler);

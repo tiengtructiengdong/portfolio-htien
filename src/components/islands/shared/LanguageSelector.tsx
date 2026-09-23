@@ -12,6 +12,7 @@
 import { useAtom } from "jotai";
 import { languageAtom } from "@stores/info";
 import type { Locale } from "@stores/info";
+import clsx from "clsx";
 
 const LOCALES: { value: Locale; label: string }[] = [
   { value: "en", label: "EN" },
@@ -42,7 +43,7 @@ export default function LanguageSelector({
   if (inline) {
     return (
       <div
-        className={`lang-selector ${className}`}
+        className={clsx("lang-selector", className)}
         role="group"
         aria-label="Language"
       >
@@ -50,7 +51,7 @@ export default function LanguageSelector({
           <button
             key={value}
             type="button"
-            className={`lang-selector__btn ${value === locale ? "lang-selector__btn--active" : ""}`}
+            className={clsx("lang-selector__btn", value === locale && "lang-selector__btn--active")}
             onClick={() => handleChange(value)}
             aria-pressed={value === locale}
           >
@@ -63,7 +64,7 @@ export default function LanguageSelector({
 
   return (
     <select
-      className={`lang-selector ${className}`}
+      className={clsx("lang-selector", className)}
       value={locale}
       onChange={(e) => handleChange(e.target.value as Locale)}
       aria-label="Language"

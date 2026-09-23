@@ -48,7 +48,9 @@ function countCorrect(typed: string, target: string): number {
   let n = 0;
   const len = Math.min(typed.length, target.length);
   for (let i = 0; i < len; i++) {
-    if (typed[i] === target[i]) n++;
+    if (typed.at(i) === target.at(i)) {
+      n++;
+    }
   }
   return n;
 }
@@ -89,7 +91,7 @@ export default function TypingTestCard() {
     const slice = target.slice(0, typed.length);
     let n = 0;
     for (let i = 0; i < slice.length; i++) {
-      if (slice[i] === " ") {
+      if (slice.at(i) === " ") {
         n++;
       }
     }
@@ -114,10 +116,14 @@ export default function TypingTestCard() {
   /** Measure the current character's line and scroll the window on. */
   useLayoutEffect(() => {
     const el = innerRef.current;
-    if (!el) return;
+    if (!el) {
+      return;
+    }
 
     const spans = el.children;
-    if (spans.length === 0) return;
+    if (spans.length === 0) {
+      return;
+    }
 
     // Detect distinct line tops to compute the line height.
     const tops = new Set<number>();
@@ -141,11 +147,15 @@ export default function TypingTestCard() {
 
   // Countdown + live WPM/accuracy timer.
   useEffect(() => {
-    if (status !== "running") return;
+    if (status !== "running") {
+      return;
+    }
 
     const id = window.setInterval(() => {
       const start = startTimeRef.current;
-      if (start == null) return;
+      if (start == null) {
+        return;
+      }
       const elapsed = (performance.now() - start) / 1000;
       const left = Math.max(0, TEST_DURATION - elapsed);
       setTimeLeft(left);
@@ -221,10 +231,14 @@ export default function TypingTestCard() {
   /** Capture keystrokes; typing only works once the test is running. */
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (status === "finished") return;
+      if (status === "finished") {
+        return;
+      }
 
       // While idle, ignore all keys (the global listener handles start).
-      if (status === "idle") return;
+      if (status === "idle") {
+        return;
+      }
 
       const { key } = e;
       if (key === "Backspace") {
@@ -234,12 +248,16 @@ export default function TypingTestCard() {
       }
 
       // Ignore modifier combos and non-printable keys (Enter, arrows, …).
-      if (e.ctrlKey || e.metaKey || e.altKey || key.length !== 1) return;
+      if (e.ctrlKey || e.metaKey || e.altKey || key.length !== 1) {
+        return;
+      }
 
       e.preventDefault();
 
       setTyped((prev) => {
-        if (prev.length >= target.length) return prev;
+        if (prev.length >= target.length) {
+          return prev;
+        }
         return prev + key;
       });
     },
@@ -294,7 +312,7 @@ export default function TypingTestCard() {
           style={{ transform: `translateY(${translateY}px)` }}
         >
           {target.split("").map((ch, i) => {
-            const typedCh = typed[i];
+            const typedCh = typed.at(i);
             let cls = "text-white/25"; // untyped
             if (i < typed.length) {
               cls =
@@ -329,7 +347,10 @@ export default function TypingTestCard() {
             /* controlled — mutations happen in onKeyDown */
           }}
           onKeyDown={handleKeyDown}
-          className="absolute inset-0 h-full w-full cursor-default opacity-0"
+          className={clsx(
+            "absolute inset-0 h-full w-full",
+            "cursor-default opacity-0",
+          )}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
@@ -339,19 +360,34 @@ export default function TypingTestCard() {
 
         {/* Finished result overlay */}
         {status === "finished" && (
-          <div className="absolute inset-0 flex items-center justify-center gap-8 bg-black/55 backdrop-blur-[1px]">
+          <div
+            className={clsx(
+              "absolute inset-0 flex items-center justify-center",
+              "gap-8 bg-black/55 backdrop-blur-[1px]",
+            )}
+          >
             <p className={clsx(MUTED_MONO, "text-cyan-400")}>
               {t(loc, "typing_test.finished")}
             </p>
             <div className="flex items-baseline gap-2">
-              <span className="font-mono text-4xl font-semibold text-[var(--color-fg)]">
+              <span
+                className={clsx(
+                  "font-mono text-4xl font-semibold",
+                  "text-[var(--color-fg)]",
+                )}
+              >
                 {finishedWpm}
               </span>
               <span className="font-mono text-xs text-[var(--color-fg-muted)]">
                 {t(loc, "typing_test.wpm")}
               </span>
             </div>
-            <div className="flex gap-4 font-mono text-xs text-[var(--color-fg)]">
+            <div
+              className={clsx(
+                "flex gap-4 font-mono text-xs",
+                "text-[var(--color-fg)]",
+              )}
+            >
               <span>
                 {t(loc, "typing_test.accuracy")}: {liveAccuracy}%
               </span>
@@ -377,7 +413,12 @@ export default function TypingTestCard() {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col items-end leading-tight">
-      <span className="text-[10px] uppercase tracking-wide text-[var(--color-fg-muted)]">
+      <span
+        className={clsx(
+          "text-[10px] uppercase tracking-wide",
+          "text-[var(--color-fg-muted)]",
+        )}
+      >
         {label}
       </span>
       <span className="text-sm text-[var(--color-fg)]">{value}</span>

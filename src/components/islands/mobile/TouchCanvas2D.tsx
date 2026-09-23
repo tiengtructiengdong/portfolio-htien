@@ -6,6 +6,7 @@
  * Hydrated client-side only (client:only="react").
  */
 import { useEffect, useRef } from "react";
+import clsx from "clsx";
 import wave2dFrag from "@shaders/mobile/wave2d.frag?raw";
 import { createTouchState, attachTouch } from "@lib/touch";
 
@@ -24,7 +25,9 @@ function compile(
   src: string,
 ): WebGLShader {
   const shader = gl.createShader(type);
-  if (!shader) throw new Error("Shader allocation failed");
+  if (!shader) {
+    throw new Error("Shader allocation failed");
+  }
   gl.shaderSource(shader, src);
   gl.compileShader(shader);
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
@@ -114,6 +117,6 @@ export default function TouchCanvas2D({
   }, []);
 
   return (
-    <canvas ref={canvasRef} className={`touch-canvas ${className ?? ""}`} />
+    <canvas ref={canvasRef} className={clsx("touch-canvas", className)} />
   );
 }

@@ -16,6 +16,7 @@ import {
   PROJECT_CARD,
   TECH_BADGE,
 } from "@lib/classes";
+import clsx from "clsx";
 
 export interface CompanyDetailContentProps {
   entry: WorkHistoryEntry;
@@ -28,8 +29,8 @@ export default function CompanyDetailContent({
   return (
     <div className="flex flex-col gap-6">
       {/* Header: company name + period */}
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className={`${ACCENT_HEADING} text-lg font-semibold`}>
+      <div className={clsx("flex flex-wrap items-baseline justify-between", "gap-2")}>
+        <h2 className={clsx(ACCENT_HEADING, "text-lg font-semibold")}>
           {entry.company_name}
         </h2>
         <span className={PERIOD_TEXT}>
@@ -43,7 +44,10 @@ export default function CompanyDetailContent({
           href={entry.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300"
+          className={clsx(
+            "font-mono text-xs text-cyan-400",
+            "transition-colors hover:text-cyan-300",
+          )}
         >
           {entry.url} ↗
         </a>
@@ -64,10 +68,10 @@ export default function CompanyDetailContent({
         <h3 className={ACCENT_HEADING}>
           {t(locale as Locale, "company_history.projects")}
         </h3>
-        {entry.projects.map((project, i) => (
-          <div key={i} className={PROJECT_CARD}>
-            <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
-              <h4 className="font-mono text-sm font-medium text-[var(--color-fg)]">
+        {entry.projects.map((project) => (
+          <div key={project.name} className={PROJECT_CARD}>
+            <div className={clsx("mb-2 flex flex-wrap items-baseline justify-between", "gap-2")}>
+              <h4 className={clsx("font-mono text-sm font-medium", "text-[var(--color-fg)]")}>
                 {project.name}
               </h4>
               {project.url && (
@@ -75,13 +79,16 @@ export default function CompanyDetailContent({
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300"
+                  className={clsx(
+                    "font-mono text-xs text-cyan-400",
+                    "transition-colors hover:text-cyan-300",
+                  )}
                 >
                   {t(locale as Locale, "company_history.link")} ↗
                 </a>
               )}
             </div>
-            <p className={`${BODY} mb-3`}>{project.problem_solved}</p>
+            <p className={clsx(BODY, "mb-3")}>{project.problem_solved}</p>
             <div className="flex flex-wrap gap-1.5">
               {project.tech_stack.map((tech) => (
                 <span key={tech} className={TECH_BADGE}>

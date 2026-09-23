@@ -6,8 +6,8 @@
  */
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useRef, useMemo, useEffect } from "react";
-import type { Mesh, ShaderMaterial } from "three";
-import * as THREE from "three";
+import { MathUtils, Vector2 } from "three";
+import type { ShaderMaterial } from "three";
 import raymarchFrag from "@shaders/desktop/raymarch.frag?raw";
 
 const VERTEX_SHADER = /* glsl */ `
@@ -30,8 +30,8 @@ function RaymarchScene({ pointer, scroll }: SceneProps): React.ReactElement {
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
-      uResolution: { value: new THREE.Vector2(size.width, size.height) },
-      uMouse: { value: new THREE.Vector2(0, 0) },
+      uResolution: { value: new Vector2(size.width, size.height) },
+      uMouse: { value: new Vector2(0, 0) },
       uScroll: { value: 0 },
     }),
     [],
@@ -50,8 +50,8 @@ function RaymarchScene({ pointer, scroll }: SceneProps): React.ReactElement {
       return;
     }
     uniforms.uTime.value = state.clock.elapsedTime;
-    uniforms.uMouse.value.lerp(new THREE.Vector2(pointer.x, pointer.y), 0.08);
-    uniforms.uScroll.value = THREE.MathUtils.lerp(
+    uniforms.uMouse.value.lerp(new Vector2(pointer.x, pointer.y), 0.08);
+    uniforms.uScroll.value = MathUtils.lerp(
       uniforms.uScroll.value,
       scroll,
       0.1,
@@ -99,6 +99,3 @@ export default function WebGLCanvas3D({
     </Canvas>
   );
 }
-
-// Re-export the Mesh type alias for downstream typing.
-export type { Mesh };

@@ -53,7 +53,9 @@ let _initialized = false;
  * registration.
  */
 function ensureLocales(): void {
-  if (_initialized) return;
+  if (_initialized) {
+    return;
+  }
   _initialized = true;
 
   if (typeof window === "undefined") {
@@ -106,7 +108,9 @@ function resolve(obj: LocaleStrings, key: string): string {
  */
 export function t(locale: Locale, key: string): string {
   const strings = _registry.get(locale) ?? _registry.get("en");
-  if (!strings) return key;
+  if (!strings) {
+    return key;
+  }
   return resolve(strings, key);
 }
 
@@ -115,7 +119,9 @@ export function t(locale: Locale, key: string): string {
  * Falls back to "en".
  */
 export function useLocale(): Locale {
-  if (typeof window === "undefined") return "en";
+  if (typeof window === "undefined") {
+    return "en";
+  }
   try {
     const stored = localStorage.getItem("portfolio-lang");
     if (
