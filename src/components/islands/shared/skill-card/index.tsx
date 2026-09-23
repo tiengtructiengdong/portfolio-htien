@@ -65,7 +65,7 @@ export default function SkillCard() {
 
   return (
     <>
-      <div className={clsx(CARD, "overflow-visible h-full")}>
+      <div className={clsx(CARD, "overflow-visible h-full select-none")}>
         <h2 className={clsx(ACCENT_HEADING, "mb-4")}>
           {t(locale as Locale, "skills.title")}
         </h2>

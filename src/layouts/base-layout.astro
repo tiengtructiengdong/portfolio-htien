@@ -58,7 +58,7 @@ const pageDescription = descriptionOverride ?? t(locale, "site.description");
       {/* Header bar */}
       <header class={HEADER_BAR}>
         <a href="/" class={BRAND}>
-          Tien Huynh
+          {t(locale, "brand")}
         </a>
         <LanguageSelector client:load inline />
       </header>
