@@ -92,7 +92,13 @@ export const SECOND_ROW = "grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3";
 export const SECOND_ROW_LEFT = "lg:col-span-1";
 
 /** Right column (2/3) in the second row. */
-export const SECOND_ROW_RIGHT = "lg:col-span-1";
+export const SECOND_ROW_RIGHT = "lg:col-span-2";
+
+/** Third row: full-width card, spaced below the second row. */
+export const THIRD_ROW = "mt-4 sm:mt-6";
+
+/** Desktop-only wrapper (hidden below the `lg` breakpoint). */
+export const DESKTOP_ONLY = "hidden lg:block";
 
 /** Timeline item row (dot + line + content). */
 export const TIMELINE_ITEM = "relative flex gap-4 pb-6 last:pb-0";

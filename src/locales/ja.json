@@ -50,7 +50,7 @@
   },
   "skills": {
     "title": "スキル",
-    "since": ""
+    "years": "年"
   },
   "typing_test": {
     "title": "タイピングテスト",
@@ -59,7 +59,9 @@
     "wpm": "WPM",
     "accuracy": "正確率",
     "time": "時間",
-    "idle_prompt": "「テスト開始」を押して60秒間のタイピングテストを始めてください。",
-    "finished": "テスト完了！"
+    "idle_prompt": "Ctrl+Shift+Enter を押してテストを開始してください。",
+    "finished": "テスト完了！",
+    "words": "単語数",
+    "hint": "Ctrl+Shift+Enter で開始 · Backspace で削除"
   }
 }

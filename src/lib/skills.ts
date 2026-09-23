@@ -32,11 +32,12 @@ export const skillCategories: SkillCategory[] = skillsData as SkillCategory[];
 // ---- Helpers ----------------------------------------------------------------
 
 /**
- * Format a "experienced since" timestamp into a year label.
- * e.g. 1483228800000 → "2017"
+ * Compute the number of full years since the given timestamp to now.
+ * e.g. 1483228800000 (2017-01-01) from 2026-09-23 → 9
  */
-export function formatExperiencedSince(timestamp: number): string {
-  return new Date(timestamp).toLocaleDateString("en-US", {
-    year: "numeric",
-  });
+export function formatExperiencedSince(timestamp: number): number {
+  const now = Date.now();
+  const diffMs = now - timestamp;
+  const years = diffMs / (365.25 * 24 * 60 * 60 * 1000);
+  return Math.max(0, Math.floor(years));
 }

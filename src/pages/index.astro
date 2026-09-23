@@ -14,10 +14,17 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import IAmACard from "@components/islands/shared/IAmACard.tsx";
 import WorkHistoryCard from "@components/islands/shared/WorkHistoryCard.tsx";
 import SkillCard from "@components/islands/shared/SkillCard.tsx";
+import TypingTestCard from "@components/islands/shared/TypingTestCard.tsx";
 import AboutCard from "@components/dom/shared/AboutCard.astro";
 import { localeFromUrl } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
-import { SECOND_ROW, SECOND_ROW_LEFT, SECOND_ROW_RIGHT } from "@lib/classes";
+import {
+  SECOND_ROW,
+  SECOND_ROW_LEFT,
+  SECOND_ROW_RIGHT,
+  THIRD_ROW,
+  DESKTOP_ONLY,
+} from "@lib/classes";
 
 const locale: Locale = localeFromUrl(Astro.url);
 ---
@@ -37,5 +44,10 @@ const locale: Locale = localeFromUrl(Astro.url);
     <div class={SECOND_ROW_RIGHT}>
       <SkillCard client:load />
     </div>
+  </div>
+
+  {/* Third row: Typing Test card (desktop only) */}
+  <div class={clsx(THIRD_ROW, DESKTOP_ONLY)}>
+    <TypingTestCard client:load />
   </div>
 </BaseLayout>

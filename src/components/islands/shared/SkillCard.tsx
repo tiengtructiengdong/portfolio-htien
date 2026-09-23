@@ -60,14 +60,21 @@ export default function SkillCard() {
 
   return (
     <>
-      <div className={CARD}>
+      <div className={clsx(CARD, "overflow-visible h-full")}>
         <h2 className={clsx(ACCENT_HEADING, "mb-4")}>
           {t(locale as Locale, "skills.title")}
         </h2>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-row gap-6">
           {skillCategories.map((group) => (
-            <section key={group.category} className="flex flex-col gap-3">
+            <section
+              key={group.category}
+              className={clsx(
+                "flex flex-col gap-3 flex-1",
+                CARD,
+                "overflow-visible",
+              )}
+            >
               <h3
                 className={clsx(ACCENT_HEADING, "text-[var(--color-fg-muted)]")}
               >
@@ -82,8 +89,8 @@ export default function SkillCard() {
                         {skill.name}
                       </span>
                       <span className="font-mono text-[10px] text-[var(--color-fg-muted)]">
-                        {t(locale as Locale, "skills.since")}{" "}
-                        {formatExperiencedSince(skill.experienced_since)}
+                        {formatExperiencedSince(skill.experienced_since)}{" "}
+                        {t(locale as Locale, "skills.years")}
                       </span>
                     </div>
 
@@ -97,7 +104,7 @@ export default function SkillCard() {
                         if (e.key === "Enter") handleBarClick(skill);
                       }}
                     >
-                      <div className="h-3 w-full overflow-hidden bg-white/10">
+                      <div className="h-3 w-full overflow-visible bg-white/10">
                         <div
                           className="h-full transition-all"
                           style={{
@@ -107,9 +114,9 @@ export default function SkillCard() {
                         />
                       </div>
 
-                      {/* Desktop hover tooltip */}
+                      {/* Desktop hover tooltip — upper-right corner */}
                       {isDesktop && skill.extra_notes && (
-                        <div className="pointer-events-none absolute left-0 top-full z-20 mt-2 hidden max-w-xs rounded-md border border-white/10 bg-[#0d0d18]/95 p-2 font-mono text-[11px] leading-relaxed text-[var(--color-fg)] shadow-lg backdrop-blur-sm group-hover:block">
+                        <div className="pointer-events-none absolute right-0 bottom-full z-20 mb-2 hidden max-w-xs rounded-md border border-white/10 bg-[#0d0d18]/95 p-2 font-mono text-[11px] leading-relaxed text-[var(--color-fg)] shadow-lg backdrop-blur-sm group-hover:block">
                           {skill.extra_notes}
                         </div>
                       )}
@@ -149,8 +156,8 @@ export default function SkillCard() {
                   {activeSkill.name}
                 </span>
                 <span className="font-mono text-xs text-[var(--color-fg-muted)]">
-                  {t(locale as Locale, "skills.since")}{" "}
-                  {formatExperiencedSince(activeSkill.experienced_since)}
+                  {formatExperiencedSince(activeSkill.experienced_since)}{" "}
+                  {t(locale as Locale, "skills.years")}
                 </span>
               </div>
               <div className="mb-4 h-2 w-full overflow-hidden rounded-full bg-white/10">

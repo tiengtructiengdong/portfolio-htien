@@ -50,7 +50,7 @@
   },
   "skills": {
     "title": "스킬",
-    "since": ""
+    "years": "년"
   },
   "typing_test": {
     "title": "타이핑 테스트",
@@ -59,7 +59,9 @@
     "wpm": "WPM",
     "accuracy": "정확도",
     "time": "시간",
-    "idle_prompt": "“테스트 시작”을 눌러 60초 타이핑 테스트를 시작하세요.",
-    "finished": "테스트 완료!"
+    "idle_prompt": "Ctrl+Shift+Enter를 눌러 테스트를 시작하세요.",
+    "finished": "테스트 완료!",
+    "words": "단어",
+    "hint": "Ctrl+Shift+Enter로 시작 · Backspace로 삭제"
   }
 }

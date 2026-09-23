@@ -50,7 +50,7 @@
   },
   "skills": {
     "title": "Skills",
-    "since": "since"
+    "years": "years"
   },
   "typing_test": {
     "title": "Typing Test",
@@ -59,7 +59,9 @@
     "wpm": "WPM",
     "accuracy": "Accuracy",
     "time": "Time",
-    "idle_prompt": "Press “Start Test” to begin a 60-second typing test.",
-    "finished": "Test complete!"
+    "idle_prompt": "Press Ctrl+Shift+Enter to start the test.",
+    "finished": "Test complete!",
+    "words": "Words",
+    "hint": "Press Ctrl+Shift+Enter to start · Backspace to delete"
   }
 }

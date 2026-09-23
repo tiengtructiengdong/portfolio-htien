@@ -50,7 +50,7 @@
   },
   "skills": {
     "title": "Kỹ năng",
-    "since": "từ"
+    "years": "năm"
   },
   "typing_test": {
     "title": "Kiểm tra gõ phím",
@@ -59,7 +59,9 @@
     "wpm": "WPM",
     "accuracy": "Độ chính xác",
     "time": "Thời gian",
-    "idle_prompt": "Nhấn “Bắt đầu” để làm bài kiểm tra gõ phím 60 giây.",
-    "finished": "Hoàn thành!"
+    "idle_prompt": "Nhấn Ctrl+Shift+Enter để bắt đầu bài kiểm tra.",
+    "finished": "Hoàn thành!",
+    "words": "Từ",
+    "hint": "Nhấn Ctrl+Shift+Enter để bắt đầu · Backspace để xóa"
   }
 }
