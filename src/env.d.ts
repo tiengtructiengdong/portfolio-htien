@@ -13,6 +13,11 @@ declare module "*.vert?raw" {
   export default shader;
 }
 
+declare module "*.vs?raw" {
+  const shader: string;
+  export default shader;
+}
+
 declare module "*.glsl?raw" {
   const shader: string;
   export default shader;

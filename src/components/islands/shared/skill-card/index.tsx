@@ -1,5 +1,5 @@
 /**
- * SkillCard.tsx
+ * skill-card/index.tsx
  * Skills card grouped by category (Frontend, Backend, AI).
  *
  * Each skill renders a monospace label + an efficiency bar (0–1).
@@ -17,15 +17,14 @@ import type { Locale } from "@lib/i18n";
 import { readViewport } from "@lib/viewport";
 import type { Skill } from "@lib/skills";
 import { skillCategories, formatExperiencedSince } from "@lib/skills";
+import { CARD, ACCENT_HEADING } from "@lib/classes";
 import {
-  CARD,
-  ACCENT_HEADING,
   MODAL_OVERLAY,
   MODAL_WINDOW,
   MODAL_TITLE_BAR,
   TRAFFIC_LIGHT,
   MODAL_BODY,
-} from "@lib/classes";
+} from "../classes";
 
 export default function SkillCard() {
   const [locale] = useAtom(languageAtom);
@@ -42,9 +41,13 @@ export default function SkillCard() {
   const closePopup = useCallback(() => setActiveSkill(null), []);
 
   useEffect(() => {
-    if (!activeSkill) return;
+    if (!activeSkill) {
+      return;
+    }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closePopup();
+      if (e.key === "Escape") {
+        closePopup();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -53,14 +56,16 @@ export default function SkillCard() {
   const handleBarClick = useCallback(
     (skill: Skill) => {
       // Desktop reveals notes on hover; only mobile opens the popup.
-      if (!isDesktop) setActiveSkill(skill);
+      if (!isDesktop) {
+        setActiveSkill(skill);
+      }
     },
     [isDesktop],
   );
 
   return (
     <>
-      <div className={clsx(CARD, "overflow-visible h-full")}>
+      <div className={clsx(CARD, "overflow-visible h-full select-none")}>
         <h2 className={clsx(ACCENT_HEADING, "mb-4")}>
           {t(locale as Locale, "skills.title")}
         </h2>
@@ -101,7 +106,9 @@ export default function SkillCard() {
                       role="button"
                       tabIndex={0}
                       onKeyDown={(e) => {
-                        if (e.key === "Enter") handleBarClick(skill);
+                        if (e.key === "Enter") {
+                          handleBarClick(skill);
+                        }
                       }}
                     >
                       <div className="h-3 w-full overflow-visible bg-white/10">
@@ -116,7 +123,16 @@ export default function SkillCard() {
 
                       {/* Desktop hover tooltip — upper-right corner */}
                       {isDesktop && skill.extra_notes && (
-                        <div className="pointer-events-none absolute right-0 bottom-full z-20 mb-2 hidden max-w-xs rounded-md border border-white/10 bg-[#0d0d18]/95 p-2 font-mono text-[11px] leading-relaxed text-[var(--color-fg)] shadow-lg backdrop-blur-sm group-hover:block">
+                        <div
+                          className={clsx(
+                            "pointer-events-none absolute right-0 bottom-full",
+                            "z-20 mb-2 hidden max-w-xs rounded-md border",
+                            "border-white/10 bg-[#0d0d18]/95 p-2",
+                            "font-mono text-[11px] leading-relaxed",
+                            "text-[var(--color-fg)] shadow-lg backdrop-blur-sm",
+                            "group-hover:block",
+                          )}
+                        >
                           {skill.extra_notes}
                         </div>
                       )}
@@ -140,13 +156,18 @@ export default function SkillCard() {
           <div className={MODAL_WINDOW} onClick={(e) => e.stopPropagation()}>
             <div className={MODAL_TITLE_BAR}>
               <span
-                className={`${TRAFFIC_LIGHT} bg-red-500 hover:bg-red-400`}
+                className={clsx(TRAFFIC_LIGHT, "bg-red-500 hover:bg-red-400")}
                 onClick={closePopup}
                 aria-label="Close"
               />
-              <span className={`${TRAFFIC_LIGHT} bg-yellow-500`} />
-              <span className={`${TRAFFIC_LIGHT} bg-green-500`} />
-              <span className="ml-2 font-mono text-xs text-[var(--color-fg-muted)]">
+              <span className={clsx(TRAFFIC_LIGHT, "bg-yellow-500")} />
+              <span className={clsx(TRAFFIC_LIGHT, "bg-green-500")} />
+              <span
+                className={clsx(
+                  "ml-2 font-mono text-xs",
+                  "text-[var(--color-fg-muted)]",
+                )}
+              >
                 {activeSkill.name}
               </span>
             </div>
@@ -160,7 +181,12 @@ export default function SkillCard() {
                   {t(locale as Locale, "skills.years")}
                 </span>
               </div>
-              <div className="mb-4 h-2 w-full overflow-hidden rounded-full bg-white/10">
+              <div
+                className={clsx(
+                  "mb-4 h-2 w-full overflow-hidden",
+                  "rounded-full bg-white/10",
+                )}
+              >
                 <div
                   className="h-full rounded-full"
                   style={{
@@ -169,7 +195,12 @@ export default function SkillCard() {
                   }}
                 />
               </div>
-              <p className="font-mono text-xs leading-relaxed text-[var(--color-fg-muted)]">
+              <p
+                className={clsx(
+                  "font-mono text-xs leading-relaxed",
+                  "text-[var(--color-fg-muted)]",
+                )}
+              >
                 {activeSkill.extra_notes}
               </p>
             </div>

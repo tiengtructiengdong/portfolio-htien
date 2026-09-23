@@ -1,5 +1,5 @@
 /**
- * IAmACard.tsx
+ * i-am-a-card/index.tsx
  *
  * "I am a" card with a console / terminal typing effect.
  *
@@ -105,7 +105,9 @@ export default function IAmACard({
 
     return (): void => {
       cancelled = true;
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
       clearInterval(cursorInterval);
     };
   }, [locale]);
@@ -127,7 +129,12 @@ export default function IAmACard({
         <span className="h-3 w-3 rounded-full bg-red-500/80" />
         <span className="h-3 w-3 rounded-full bg-yellow-500/80" />
         <span className="h-3 w-3 rounded-full bg-green-500/80" />
-        <span className="ml-2 font-mono text-xs text-[var(--color-fg-muted)]">
+        <span
+          className={clsx(
+            "ml-2 font-mono text-xs",
+            "text-[var(--color-fg-muted)]",
+          )}
+        >
           ~/whoami
         </span>
       </div>

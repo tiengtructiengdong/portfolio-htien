@@ -10,12 +10,12 @@
  *  - Second row: WorkHistoryCard (1/3) + SkillCard (2/3)
  */
 import clsx from "clsx";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import IAmACard from "@components/islands/shared/IAmACard.tsx";
-import WorkHistoryCard from "@components/islands/shared/WorkHistoryCard.tsx";
-import SkillCard from "@components/islands/shared/SkillCard.tsx";
-import TypingTestCard from "@components/islands/shared/TypingTestCard.tsx";
-import AboutCard from "@components/dom/shared/AboutCard.astro";
+import BaseLayout from "@layouts/base-layout.astro";
+import IAmACard from "@components/islands/shared/i-am-a-card";
+import WorkHistoryCard from "@components/islands/shared/work-history-card";
+import SkillCard from "@components/islands/shared/skill-card";
+import TypingTestCard from "@components/islands/desktop/typing-test-card";
+import AboutCard from "@components/dom/shared/about-card.astro";
 import { localeFromUrl } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
 import {

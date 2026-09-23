@@ -1,11 +1,12 @@
 /**
- * MobileNavigation.tsx
+ * mobile-navigation/index.tsx
  * Touch-optimized overlay menu. Toggled by the [data-nav-toggle]
- * button rendered statically in MobileHeader.astro.
+ * button rendered statically in mobile-header.astro.
  *
  * Hydrated with client:load so it works without JS-dependent markup.
  */
 import { useEffect, useState, useCallback } from "react";
+import clsx from "clsx";
 
 const NAV_ITEMS = [
   { label: "Work", href: "/#work" },
@@ -28,15 +29,19 @@ export default function MobileNavigation({
   useEffect(() => {
     const buttons = document.querySelectorAll<HTMLButtonElement>("[data-nav-toggle]");
     const handlers: Array<() => void> = [];
-    buttons.forEach((btn) => {
+    for (const btn of buttons) {
       const handler = (): void => {
         toggle();
         btn.setAttribute("aria-expanded", String(open));
       };
       btn.addEventListener("click", handler);
       handlers.push(() => btn.removeEventListener("click", handler));
-    });
-    return (): void => handlers.forEach((fn) => fn());
+    }
+    return (): void => {
+      for (const fn of handlers) {
+        fn();
+      }
+    };
   }, [toggle, open]);
 
   useEffect(() => {
@@ -49,7 +54,7 @@ export default function MobileNavigation({
   return (
     <nav
       id="mobile-nav"
-      className={`mobile-nav-overlay ${className ?? ""}`}
+      className={clsx("mobile-nav-overlay", className)}
       data-open={open}
       aria-hidden={!open}
     >

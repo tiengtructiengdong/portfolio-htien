@@ -1,17 +1,17 @@
 ---
 /**
- * MobileLayout.astro
+ * mobile-layout.astro
  * Single-column flex layout for mobile.
  * Hidden above 1280px (mirrored in DesktopLayout).
  */
 import clsx from "clsx";
-import BaseLayout from "./BaseLayout.astro";
+import BaseLayout from "./base-layout.astro";
 import { MOBILE_SHELL } from "@lib/classes";
 
 export interface Props {
   title?: string;
   description?: string;
-  lang?: import("./BaseLayout.astro").Props["lang"];
+  lang?: import("./base-layout.astro").Props["lang"];
 }
 
 const { title, description, lang } = Astro.props;

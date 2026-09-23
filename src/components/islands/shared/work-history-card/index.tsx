@@ -1,5 +1,5 @@
 /**
- * WorkHistoryCard.tsx
+ * work-history-card/index.tsx
  * Timeline list of work history entries.
  *
  * - Desktop: clicking a company opens a Mac-style modal popup.
@@ -15,22 +15,23 @@ import { readViewport } from "@lib/viewport";
 import { languageAtom } from "@stores/info";
 import { t } from "@lib/i18n";
 import type { Locale } from "@lib/i18n";
+import { CARD, ACCENT_HEADING } from "@lib/classes";
 import {
-  CARD,
-  ACCENT_HEADING,
   TIMELINE_ITEM,
   TIMELINE_DOT,
   TIMELINE_LINE,
   TIMELINE_CONTENT,
   COMPANY_NAME,
+} from "./classes";
+import {
   PERIOD_TEXT,
   MODAL_OVERLAY,
   MODAL_WINDOW,
   MODAL_TITLE_BAR,
   TRAFFIC_LIGHT,
   MODAL_BODY,
-} from "@lib/classes";
-import CompanyDetailContent from "./CompanyDetailContent";
+} from "../classes";
+import CompanyDetailContent from "../company-detail-content";
 import clsx from "clsx";
 
 export default function WorkHistoryCard() {
@@ -80,7 +81,9 @@ export default function WorkHistoryCard() {
       return;
     }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeModal();
+      if (e.key === "Escape") {
+        closeModal();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -89,7 +92,7 @@ export default function WorkHistoryCard() {
   return (
     <>
       <div className={CARD}>
-        <h2 className={`${ACCENT_HEADING} mb-4`}>
+        <h2 className={clsx(ACCENT_HEADING, "mb-4")}>
           {t(locale as Locale, "company_history.title")}
         </h2>
         <div className="flex flex-col">
@@ -105,7 +108,9 @@ export default function WorkHistoryCard() {
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") handleCompanyClick(entry);
+                  if (e.key === "Enter") {
+                    handleCompanyClick(entry);
+                  }
                 }}
               >
                 <div className="flex-1">
@@ -139,13 +144,18 @@ export default function WorkHistoryCard() {
           <div className={MODAL_WINDOW} onClick={(e) => e.stopPropagation()}>
             <div className={MODAL_TITLE_BAR}>
               <span
-                className={`${TRAFFIC_LIGHT} bg-red-500 hover:bg-red-400`}
+                className={clsx(TRAFFIC_LIGHT, "bg-red-500 hover:bg-red-400")}
                 onClick={closeModal}
                 aria-label="Close"
               />
-              <span className={`${TRAFFIC_LIGHT} bg-yellow-500`} />
-              <span className={`${TRAFFIC_LIGHT} bg-green-500`} />
-              <span className="ml-2 font-mono text-xs text-[var(--color-fg-muted)]">
+              <span className={clsx(TRAFFIC_LIGHT, "bg-yellow-500")} />
+              <span className={clsx(TRAFFIC_LIGHT, "bg-green-500")} />
+              <span
+                className={clsx(
+                  "ml-2 font-mono text-xs",
+                  "text-[var(--color-fg-muted)]",
+                )}
+              >
                 {selected.company_name}
               </span>
             </div>
